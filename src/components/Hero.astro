@@ -1,21 +1,32 @@
 ---
+import aurelieImage from '../assets/aurelie.jpg';
 ---
-<div class="magazine-page h-full" data-density="hard">
-  <div class="page-content flex flex-col justify-between items-center text-center bg-dark text-light">
-    <div class="w-full">
-      <div class="border-2 border-highlight p-1 inline-block mb-8">
+<div class="magazine-page h-full relative overflow-hidden" data-density="hard">
+  <!-- Full Page Background Image -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src={aurelieImage.src} 
+      alt="Aurélie Magontier" 
+      class="w-full h-full object-cover opacity-60 brightness-75"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-dark/80 via-dark/40 to-dark/90"></div>
+  </div>
+
+  <div class="relative z-10 page-content flex flex-col justify-between items-center text-center h-full">
+    <div class="w-full pt-8">
+      <div class="border-2 border-highlight p-1 inline-block mb-8 animate-fade-in">
         <div class="border border-highlight px-4 py-1 text-highlight uppercase tracking-[0.25em] text-xs font-bold">
           Édition 2026
         </div>
       </div>
       
-      <h1 class="text-6xl md:text-7xl font-serif font-black tracking-tighter mb-4 text-highlight">
+      <h1 class="text-6xl md:text-8xl font-serif font-black tracking-tighter mb-4 text-highlight drop-shadow-2xl">
         L'ORÉE
       </h1>
       
       <div class="h-px w-24 bg-highlight mx-auto mb-8"></div>
       
-      <div class="space-y-2 text-sm uppercase tracking-widest text-highlight/80 font-semibold">
+      <div class="space-y-2 text-sm uppercase tracking-widest text-highlight/90 font-semibold drop-shadow-md">
         <p>Identité de marque</p>
         <p>Création graphique</p>
         <p>Création de site web</p>
@@ -23,22 +34,12 @@
       </div>
     </div>
 
-    <div class="relative w-full aspect-[4/5] max-h-[40vh] overflow-hidden rounded-sm shadow-2xl border-4 border-highlight/20">
-      <img 
-        src="https://picsum.photos/seed/loree-hero/800/1000?grayscale" 
-        alt="Aurélie Magontier" 
-        class="w-full h-full object-cover opacity-80"
-        referrerpolicy="no-referrer"
-      />
-      <div class="absolute inset-0 bg-dark/30"></div>
-    </div>
-
-    <div class="w-full">
-      <button class="px-10 py-4 bg-highlight text-dark rounded-full font-bold uppercase tracking-widest text-sm hover:-translate-y-1 transition-transform shadow-lg">
+    <div class="w-full pb-8">
+      <button class="px-10 py-4 bg-highlight text-dark rounded-full font-bold uppercase tracking-widest text-sm hover:-translate-y-1 transition-transform shadow-2xl">
         Découvrir Plus
       </button>
       
-      <div class="mt-8 flex justify-between text-[10px] uppercase tracking-widest text-highlight/50 font-bold">
+      <div class="mt-12 flex justify-between text-[10px] uppercase tracking-widest text-highlight/60 font-black border-t border-highlight/20 pt-4">
         <div>Aurélie Magontier</div>
         <div>Fondatrice</div>
       </div>
