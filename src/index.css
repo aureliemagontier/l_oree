@@ -1,1 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&family=Mulish:wght@300;400;600;900&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-serif: "Quattrocento", serif;
+  --font-sans: "Mulish", sans-serif;
+  --color-primary: #79B6D8;
+  --color-secondary: #C7E4CA;
+  --color-dark: #2c3e50;
+  --color-light: #F0EFEB;
+  --color-highlight: #f5ebc8;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-zinc-100 text-dark;
+  }
+}
+
+.magazine-page {
+  @apply bg-light shadow-inner overflow-hidden relative;
+  width: 100%;
+  height: 100%;
+}
+
+.magazine-page[data-density="hard"] {
+  @apply bg-dark text-light;
+}
+
+.st-page-flip {
+  @apply mx-auto;
+  box-shadow: 0 0 50px rgba(0,0,0,0.2);
+}
+
+.page-content {
+  @apply p-12 h-full flex flex-col;
+}
+
+.scrollable-content {
+  @apply overflow-y-auto pr-4;
+}
+
+/* Custom scrollbar */
+.scrollable-content::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollable-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollable-content::-webkit-scrollbar-thumb {
+  background: #79B6D8;
+  border-radius: 10px;
+}

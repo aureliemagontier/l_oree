@@ -1,0 +1,101 @@
+---
+interface Props {
+  packIndex: number;
+  showFAQ?: boolean;
+}
+
+const { packIndex, showFAQ = false } = Astro.props;
+
+const packs = [
+  {
+    title: "L'Orée Web",
+    price: "2000€",
+    subtitle: "Site Web Complet & Professionnel",
+    popular: true,
+    features: [
+      "Site web complet",
+      "Responsive design",
+      "5-6 pages",
+      "SEO optimisé",
+      "Maintenance 3 mois"
+    ],
+    buttonText: "Sélectionner"
+  },
+  {
+    title: "L'Orée Signature",
+    price: "Sur devis",
+    subtitle: "Solution Complète sur Mesure",
+    popular: false,
+    features: [
+      "Identité visuelle complète",
+      "Logo + Charte graphique",
+      "Tous les supports",
+      "Communication intégrée"
+    ],
+    buttonText: "Devis"
+  }
+];
+
+const pack = packs[packIndex];
+
+const faqs = [
+  { q: "Puis-je combiner les packs ?", a: "Absolument ! Formules sur mesure selon vos besoins." },
+  { q: "Consultation gratuite ?", a: "Oui ! Premier rendez-vous pour comprendre votre projet." },
+  { q: "Délais ?", a: "2 à 8 semaines selon le pack et la complexité." },
+  { q: "Frais cachés ?", a: "Non, tarifs transparents et clairs dès le départ." }
+];
+---
+<div class="magazine-page h-full">
+  <div class="page-content h-full">
+    {packIndex === 0 && (
+      <div class="mb-12">
+        <h2 class="text-3xl font-serif font-bold text-primary mb-2">Nos Packs</h2>
+        <p class="text-sm text-dark/60 uppercase tracking-widest font-bold">Choisissez le pack qui correspond à vos besoins</p>
+        <div class="h-1 w-16 bg-primary mt-2"></div>
+      </div>
+    )}
+
+    <div class={`p-8 rounded-3xl border-2 ${pack.popular ? 'border-primary bg-white shadow-xl' : 'border-zinc-100 bg-zinc-50 shadow-sm'} relative overflow-hidden`}>
+      {pack.popular && (
+        <div class="absolute top-0 right-0 bg-primary text-white px-6 py-1 text-[10px] font-black uppercase tracking-widest transform rotate-45 translate-x-6 translate-y-4">
+          Populaire
+        </div>
+      )}
+      
+      <div class="mb-8">
+        <h3 class="text-2xl font-serif font-bold text-dark mb-1">{pack.title}</h3>
+        <p class="text-sm text-dark/60 mb-4">{pack.subtitle}</p>
+        <div class="text-3xl font-black text-primary">{pack.price}</div>
+      </div>
+
+      <ul class="space-y-4 mb-10">
+        {pack.features.map(feature => (
+          <li class="flex items-center gap-3 text-sm text-dark/80">
+            <div class="w-5 h-5 bg-secondary/30 rounded-full flex items-center justify-center text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            {feature}
+          </li>
+        ))}
+      </ul>
+
+      <button class={`w-full py-4 rounded-2xl font-bold uppercase tracking-widest text-sm transition-all ${pack.popular ? 'bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20' : 'bg-dark text-white hover:bg-dark/90 shadow-lg shadow-dark/20'}`}>
+        {pack.buttonText}
+      </button>
+    </div>
+
+    {showFAQ && (
+      <div class="mt-12">
+        <h3 class="text-xl font-serif font-bold text-dark mb-6 border-b border-zinc-200 pb-2">Foire Aux Questions</h3>
+        <div class="space-y-6 scrollable-content max-h-[30vh]">
+          {faqs.map(faq => (
+            <div>
+              <h4 class="text-sm font-bold text-primary mb-1">{faq.q}</h4>
+              <p class="text-xs text-dark/70 leading-relaxed italic">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</div>

@@ -1,5 +1,11 @@
 ---
 import '../index.css';
+import Hero from '../components/Hero.astro';
+import Presentation from '../components/Presentation.astro';
+import Services from '../components/Services.astro';
+import Pricing from '../components/Pricing.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <html lang="fr">
@@ -8,16 +14,85 @@ import '../index.css';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>L'orée</title>
+		<title>L'orée | Édition 2026</title>
 	</head>
-	<body class="bg-zinc-50 text-zinc-900 min-h-screen flex items-center justify-center">
-		<div class="text-center p-8 bg-white rounded-2xl shadow-xl border border-zinc-200 max-w-md">
-			<h1 class="text-4xl font-bold tracking-tight mb-4 text-zinc-900">L'orée</h1>
-			<p class="text-zinc-600 mb-6">Un build Astro propre et prêt à l'emploi.</p>
-			<div class="flex gap-4 justify-center">
-				<a href="https://docs.astro.build" class="px-4 py-2 bg-zinc-900 text-white rounded-lg hover:bg-zinc-800 transition-colors">Documentation</a>
-				<a href="https://astro.build/chat" class="px-4 py-2 border border-zinc-200 rounded-lg hover:bg-zinc-50 transition-colors">Discord</a>
+	<body class="bg-zinc-100 text-dark min-h-screen flex items-center justify-center p-4 md:p-8 overflow-hidden">
+		<div id="magazine-container" class="relative w-full max-w-5xl aspect-[1.4/1] mx-auto">
+			<div id="magazine" class="st-page-flip">
+				<Hero />
+				<Presentation />
+				<Services />
+				<Pricing packIndex={0} />
+				<Pricing packIndex={1} showFAQ={true} />
+				<Contact />
+				<Footer />
+			</div>
+
+			<!-- Navigation Controls -->
+			<div class="absolute -bottom-12 left-0 right-0 flex justify-center gap-8 items-center">
+				<button id="prev-page" class="p-3 rounded-full bg-white shadow-lg border border-zinc-200 text-primary hover:bg-primary hover:text-white transition-all">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+				</button>
+				<div class="text-xs font-black uppercase tracking-[0.2em] text-dark/40">
+					Page <span id="page-number">1</span> / 7
+				</div>
+				<button id="next-page" class="p-3 rounded-full bg-white shadow-lg border border-zinc-200 text-primary hover:bg-primary hover:text-white transition-all">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+				</button>
 			</div>
 		</div>
+
+		<script>
+			import { PageFlip } from 'page-flip';
+
+			document.addEventListener('DOMContentLoaded', () => {
+				const magazineElement = document.getElementById('magazine');
+				const pageNumberElement = document.getElementById('page-number');
+				const prevBtn = document.getElementById('prev-page');
+				const nextBtn = document.getElementById('next-page');
+
+				if (!magazineElement) return;
+
+				const pageFlip = new PageFlip(magazineElement, {
+					width: 550, // base page width
+					height: 733, // base page height
+					size: "stretch",
+					minWidth: 315,
+					maxWidth: 1000,
+					minHeight: 420,
+					maxHeight: 1350,
+					maxShadowOpacity: 0.5,
+					showCover: true,
+					mobileScrollSupport: false,
+					usePortrait: true,
+					startPage: 0,
+					flippingTime: 1000,
+					swipeDistance: 30,
+					clickEventForward: true,
+					useMouseEvents: true,
+				});
+
+				pageFlip.loadFromHTML(document.querySelectorAll('.magazine-page'));
+
+				pageFlip.on('flip', (e) => {
+					if (pageNumberElement) {
+						pageNumberElement.innerText = (e.data + 1).toString();
+					}
+				});
+
+				prevBtn?.addEventListener('click', () => {
+					pageFlip.flipPrev();
+				});
+
+				nextBtn?.addEventListener('click', () => {
+					pageFlip.flipNext();
+				});
+
+				// Handle window resize
+				window.addEventListener('resize', () => {
+					// pageFlip.update(); // The library handles stretch automatically
+				});
+			});
+		</script>
 	</body>
 </html>
