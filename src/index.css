@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Quattrocento", serif;
-  --font-sans: "Mulish", sans-serif;
+  --font-serif: "Bodoni Moda ", serif;
+  --font-sans: "Bodoni Moda ", sans-serif;
   --color-primary: #79B6D8;
   --color-secondary: #C7E4CA;
   --color-dark: #2c3e50;
