@@ -13,47 +13,89 @@ import aurelieImage from '../assets/aurelie.jpg';
 
   <div class="relative z-10 page-content flex flex-col justify-between items-center text-center h-full font-serif">
     <!-- Navigation Bar -->
-    <nav class="w-full flex justify-center items-center mb-[-42px]">
-      <div class="flex space-x-1 text-[8px] uppercase tracking-[0.1em] text-highlight/90 font-bold">
-        <a href="#" class="px-2 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Accueil</a>
-        <a href="#" class="px-2 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Qui suis-je?</a>
-        <a href="#" class="px-2 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Ce que je crée</a>
-        <a href="#" class="px-2 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Offres signature</a>
-        <a href="#" class="px-2 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Contactez-moi</a>
+    <nav class="w-full flex justify-center items-center mb-[-12px]">
+      <div class="flex space-x-0 text-[8px] uppercase tracking-[0.1em] text-highlight/90 font-black">
+        <a href="#" class="px-1 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Accueil</a>
+        <a href="#" class="px-1 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Qui suis-je?</a>
+        <a href="#" class="px-1 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Ce que je crée</a>
+        <a href="#" class="px-1 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Offres signature</a>
+        <a href="#" class="px-1 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Contactez-moi</a>
       </div>
     </nav>
 
-    <div class="w-full pt-[2px]">
+    <div class="w-full pt-[2px] relative flex-grow">
       <h1 class="text-6xl md:text-8xl font-serif font-black tracking-tighter mb-4 text-primary drop-shadow-2xl">
         L'ORÉE
       </h1>
 
-      <div class="border-2 border-primary p-1 inline-block mb-8 animate-fade-in">
+      <div class="border-2 border-primary p-1 inline-block mb-8 animate-fade-in -mt-[15px]">
         <div class="border border-primary px-4 py-1 text-highlight bg-primary/50 uppercase tracking-[0.25em] text-xs font-black">
-          Édition 2025
+          Édition 2026
         </div>
       </div>
-      
-      <div class="h-px w-24 bg-primary mx-auto mb-8 mt-[-30px]"></div>
-      
-      <div class="space-y-2 text-sm uppercase tracking-widest text-highlight/90 font-semibold drop-shadow-md mt-[50px]">
-        <p>Identité de marque</p>
-        <p>Création graphique</p>
-        <p>Création de site web</p>
-        <p>Stratégie de communication</p>
+
+      <!-- Right aligned block (Higher) -->
+      <div class="absolute top-[200px] right-2 md:right-4 text-right max-w-[260px] animate-fade-in">
+        <p class="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-highlight font-black drop-shadow-md mb-3 leading-relaxed">
+          Identité de marque & Stratégie de communication
+        </p>
+        <p class="text-highlight/90 text-[11px] md:text-[12px] font-poppins font-light italic leading-relaxed border-r-2 border-primary pr-3">
+          Quand la stratégie rencontre la sensibilité, la marque prend vie
+        </p>
+      </div>
+
+      <!-- Left aligned block (Lower) -->
+      <div class="absolute top-[280px] left-4 md:left-8 text-left max-w-[220px] animate-fade-in">
+        <p class="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-highlight font-black drop-shadow-md mb-3 leading-relaxed">
+          Création graphique & site web
+        </p>
+        <p class="text-highlight/90 text-[11px] md:text-[12px] font-poppins font-light italic leading-relaxed border-l-2 border-primary pl-3">
+          Entre intuition, sensibilité et précision : une création qui vous ressemble
+        </p>
       </div>
     </div>
 
-    <div class="w-full pb-[102px] relative">
+    <div class="w-full pb-[72px] relative">
       <div class="flex justify-center">
-        <button class="px-10 py-4 bg-primary text-highlight rounded-full font-bold uppercase tracking-widest text-sm hover:-translate-y-1 transition-transform shadow-2xl">
-          Découvrir Plus
+        <button class="border-2 border-primary p-1 inline-block hover:-translate-y-1 transition-transform animate-fade-in">
+          <div class="border border-primary px-6 py-2 text-highlight bg-primary/50 uppercase tracking-[0.25em] text-[12px] font-black shadow-2xl">
+            Découvrir Plus
+          </div>
         </button>
       </div>
-      
-      <div class="absolute bottom-0 right-0 text-[11px] uppercase tracking-[0.3em] text-highlight font-black">
-        Aurélie Magontier
-      </div>
+  </div>
+
+  <!-- Vertical URL -->
+  <div class="absolute bottom-36 right-4 text-[10px] uppercase tracking-[0.5em] text-highlight font-black [writing-mode:vertical-rl] rotate-180">
+    www.loreedesign.fr
+  </div>
+
+  <!-- Fake Barcode -->
+  <div class="absolute bottom-4 right-4 bg-white/90 px-3 py-1 flex flex-col items-center shadow-2xl z-20">
+    <div class="flex h-10 items-end">
+      <div class="w-[3px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[1px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[4px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[2px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[1px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[5px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[2px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[1px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[3px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[1px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[4px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[2px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[1px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[3px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[1px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[4px] h-full bg-black mx-[1px]"></div>
+      <div class="w-[2px] h-full bg-black mx-[1px]"></div>
+    </div>
+    <div class="text-[9px] font-mono text-black mt-0.5 tracking-[0.2em] font-bold">
+      3 141592 653589
+    </div>
+    <div class="text-[8px] font-sans text-black/80 mt-0.5 uppercase tracking-[0.1em] font-black border-t border-black/20 pt-0.5 w-full text-center">
+      6,50€ | 2026
     </div>
   </div>
 </div>

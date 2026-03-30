@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Mulish:wght@300;400;600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Mulish:wght@300;400;600;900&family=Poppins:ital,wght@0,300;1,300&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-serif: "Bodoni Moda", serif;
   --font-sans: "Mulish", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
   --color-primary: #79B6D8;
   --color-secondary: #C7E4CA;
   --color-dark: #1a1a1a;
