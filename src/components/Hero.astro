@@ -1,12 +1,11 @@
 ---
-// Utilisation d'un placeholder en attendant que les fichiers src/assets/*.jpg soient remplis
-const aurelieImage = "https://picsum.photos/seed/loree-portrait/1000/1500?grayscale";
+import aurelieImage from '../assets/aurelie.jpg';
 ---
 <div class="magazine-page h-full relative overflow-hidden" data-density="hard">
   <!-- Full Page Background Image -->
   <div class="absolute inset-0 z-0">
     <img 
-      src={aurelieImage} 
+      src={aurelieImage.src} 
       alt="Aurélie Magontier" 
       class="w-full h-full object-cover opacity-60 brightness-75"
     />

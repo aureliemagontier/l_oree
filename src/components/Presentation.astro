@@ -1,13 +1,17 @@
 ---
+import profil2 from '../assets/profil2.jpeg';
 ---
 <div class="magazine-page h-full">
   <div class="page-content flex flex-col h-full">
-    <div class="mb-12">
+    <div class="mb-8">
       <h2 class="text-3xl font-serif font-bold text-primary mb-2">Présentation</h2>
       <div class="h-1 w-16 bg-primary"></div>
     </div>
 
     <div class="scrollable-content flex-grow">
+      <div class="mb-8 rounded-2xl overflow-hidden shadow-lg">
+        <img src={profil2.src} alt="Aurélie Magontier" class="w-full h-48 object-cover" />
+      </div>
       <div class="prose prose-zinc prose-sm leading-relaxed text-dark/80 italic mb-12">
         <p class="mb-4">
           "L'Orée est née pour accompagner celles et ceux qui créent, fabriquent et entreprennent avec le cœur.
