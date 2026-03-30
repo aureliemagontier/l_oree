@@ -3,30 +3,40 @@ import aurelieImage from '../assets/aurelie.jpg';
 ---
 <div class="magazine-page h-full relative overflow-hidden" data-density="hard">
   <!-- Full Page Background Image -->
-  <div class="absolute inset-0 z-0">
+  <div class="absolute inset-0 z-0 bg-dark">
     <img 
       src={aurelieImage.src} 
       alt="Aurélie Magontier" 
-      class="w-full h-full object-cover opacity-60 brightness-75"
+      class="w-full h-full object-cover opacity-80"
     />
-    <div class="absolute inset-0 bg-gradient-to-b from-dark/80 via-dark/40 to-dark/90"></div>
   </div>
 
-  <div class="relative z-10 page-content flex flex-col justify-between items-center text-center h-full">
-    <div class="w-full pt-8">
-      <div class="border-2 border-highlight p-1 inline-block mb-8 animate-fade-in">
-        <div class="border border-highlight px-4 py-1 text-highlight uppercase tracking-[0.25em] text-xs font-bold">
-          Édition 2026
+  <div class="relative z-10 page-content flex flex-col justify-between items-center text-center h-full font-serif">
+    <!-- Navigation Bar -->
+    <nav class="w-full flex justify-center items-center mb-[-42px]">
+      <div class="flex space-x-1 text-[8px] uppercase tracking-[0.1em] text-highlight/90 font-bold">
+        <a href="#" class="px-2 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Accueil</a>
+        <a href="#" class="px-2 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Qui suis-je?</a>
+        <a href="#" class="px-2 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Ce que je crée</a>
+        <a href="#" class="px-2 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Offres signature</a>
+        <a href="#" class="px-2 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Contactez-moi</a>
+      </div>
+    </nav>
+
+    <div class="w-full pt-[2px]">
+      <h1 class="text-6xl md:text-8xl font-serif font-black tracking-tighter mb-4 text-primary drop-shadow-2xl">
+        L'ORÉE
+      </h1>
+
+      <div class="border-2 border-primary p-1 inline-block mb-8 animate-fade-in">
+        <div class="border border-primary px-4 py-1 text-highlight bg-primary/50 uppercase tracking-[0.25em] text-xs font-black">
+          Édition 2025
         </div>
       </div>
       
-      <h1 class="text-6xl md:text-8xl font-serif font-black tracking-tighter mb-4 text-highlight drop-shadow-2xl">
-        L'ORÉE
-      </h1>
+      <div class="h-px w-24 bg-primary mx-auto mb-8 mt-[-30px]"></div>
       
-     
-      
-      <div class="space-y-2 text-sm uppercase tracking-widest text-highlight/90 font-semibold drop-shadow-md">
+      <div class="space-y-2 text-sm uppercase tracking-widest text-highlight/90 font-semibold drop-shadow-md mt-[50px]">
         <p>Identité de marque</p>
         <p>Création graphique</p>
         <p>Création de site web</p>
@@ -34,14 +44,16 @@ import aurelieImage from '../assets/aurelie.jpg';
       </div>
     </div>
 
-    <div class="w-full pb-8">
-      <button class="px-10 py-4 bg-highlight text-dark rounded-full font-bold uppercase tracking-widest text-sm hover:-translate-y-1 transition-transform shadow-2xl">
-        Découvrir Plus
-      </button>
+    <div class="w-full pb-[102px] relative">
+      <div class="flex justify-center">
+        <button class="px-10 py-4 bg-primary text-highlight rounded-full font-bold uppercase tracking-widest text-sm hover:-translate-y-1 transition-transform shadow-2xl">
+          Découvrir Plus
+        </button>
+      </div>
       
-      <div class="mt-12 flex justify-between text-[10px] uppercase tracking-widest text-highlight/60 font-black border-t border-highlight/20 pt-4">
-        <div>Aurélie Magontier</div>
-            </div>
+      <div class="absolute bottom-0 right-0 text-[11px] uppercase tracking-[0.3em] text-highlight font-black">
+        Aurélie Magontier
+      </div>
     </div>
   </div>
 </div>
