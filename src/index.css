@@ -48,6 +48,6 @@
   background: transparent;
 }
 .scrollable-content::-webkit-scrollbar-thumb {
-  background: #79B6D8;
+  background: #e02909;
   border-radius: 10px;
 }
