@@ -44,7 +44,7 @@
 }
 
 .page-content {
-  @apply p-12 h-full flex flex-col;
+  @apply pt-4 px-12 pb-12 h-full flex flex-col;
 }
 
 .scrollable-content {
