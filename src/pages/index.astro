@@ -20,11 +20,16 @@ import Footer from '../components/Footer.astro';
 		<div id="magazine-container" class="relative w-full max-w-5xl aspect-[1.4/1] mx-auto">
 			<div id="magazine" class="st-page-flip">
 				<Hero />
-				<Presentation />
+				<Presentation part={1} />
+				<Presentation part={2} />
 				<Services />
-				<Pricing packIndex={0} />
-				<Pricing packIndex={1} showFAQ={true} />
-				<Contact />
+				<Pricing packIndex={0} side="right" />
+				<Pricing packIndex={1} side="left" />
+				<Pricing packIndex={2} side="right" />
+				<Pricing packIndex={3} side="left" />
+				<Pricing onlyFAQ={true} side="right" />
+				<Contact part="form" side="left" />
+				<Contact part="info" side="right" />
 				<Footer />
 			</div>
 
@@ -34,7 +39,7 @@ import Footer from '../components/Footer.astro';
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
 				</button>
 				<div class="text-xs font-black uppercase tracking-[0.2em] text-dark/40">
-					Page <span id="page-number">1</span> / 7
+					Page <span id="page-number">1</span> / 12
 				</div>
 				<button id="next-page" class="p-3 rounded-full bg-white shadow-lg border border-zinc-200 text-primary hover:bg-primary hover:text-white transition-all">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
@@ -86,6 +91,22 @@ import Footer from '../components/Footer.astro';
 
 				nextBtn?.addEventListener('click', () => {
 					pageFlip.flipNext();
+				});
+
+				// Handle navigation buttons inside pages
+				magazineElement.addEventListener('click', (e) => {
+					const target = e.target as HTMLElement;
+					const btnPrev = target.closest('.btn-prev-page');
+					const btnNext = target.closest('.btn-next-page');
+					const btnEnter = target.closest('#enter-magazine');
+
+					if (btnPrev) {
+						e.stopPropagation();
+						pageFlip.flipPrev();
+					} else if (btnNext || btnEnter) {
+						e.stopPropagation();
+						pageFlip.flipNext();
+					}
 				});
 
 				// Handle window resize

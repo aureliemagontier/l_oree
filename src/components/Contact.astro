@@ -1,69 +1,95 @@
 ---
+interface Props {
+  part?: 'form' | 'info';
+  side?: 'left' | 'right';
+}
+
+const { part = 'form', side = 'left' } = Astro.props;
 ---
 <div class="magazine-page h-full">
-  <div class="page-content h-full">
-    <div class="mb-12">
-      <h2 class="text-3xl font-serif font-bold text-primary mb-2">Nous Contacter</h2>
-      <div class="h-1 w-16 bg-primary"></div>
-    </div>
+  <div class="page-content h-full flex flex-col">
+    {part === 'form' && (
+      <div class="mb-8">
+        <h2 class="text-3xl font-serif font-bold text-primary mb-2">Me Contacter</h2>
+        <div class="h-1 w-16 bg-primary"></div>
+      </div>
+    )}
 
-    <div class="grid grid-cols-1 gap-8 flex-grow">
-      <div class="p-8 bg-dark text-light rounded-3xl shadow-2xl relative overflow-hidden">
-        <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl"></div>
-        
-        <div class="relative z-10 space-y-8">
-          <div class="flex items-center gap-6 group">
-            <div class="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    {part === 'info' && (
+      <div class="flex-grow flex flex-col">
+        {/* Invisible spacer to match the title on the left page for perfect symmetry */}
+        <div class="mb-8 opacity-0 pointer-events-none select-none" aria-hidden="true">
+          <h2 class="text-3xl font-serif font-bold text-primary mb-2">Me Contacter</h2>
+          <div class="h-1 w-16 bg-primary"></div>
+        </div>
+
+        <div class="space-y-12 max-w-md pt-8">
+          <div class="flex items-center gap-8 group">
+            <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform border border-primary/20 shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             </div>
-            <div>
-              <h3 class="text-xs font-bold uppercase tracking-widest text-highlight/60 mb-1">Email</h3>
-              <p class="text-lg font-serif text-highlight">aurelie.magontier@loreedesign.com</p>
+            <div class="flex-grow">
+              <a 
+                href="mailto:aurelie.magontier@loreedesign.com" 
+                class="inline-flex items-center justify-center w-full py-5 bg-primary text-white rounded-2xl font-bold uppercase tracking-widest text-[10px] hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 font-sans transform hover:-translate-y-1"
+              >
+                Me contacter par email
+              </a>
             </div>
           </div>
 
-          <div class="flex items-center gap-6 group">
-            <div class="w-14 h-14 bg-secondary/20 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="flex items-center gap-8 group">
+            <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform border border-primary/20 shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share-2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.41" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
             </div>
-            <div>
-              <h3 class="text-xs font-bold uppercase tracking-widest text-highlight/60 mb-1">Téléphone</h3>
-              <p class="text-lg font-serif text-highlight">+33 (0)6 61 31 60 06</p>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-6 group">
-            <div class="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share-2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.41" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-            </div>
-            <div>
-              <h3 class="text-xs font-bold uppercase tracking-widest text-highlight/60 mb-1">Réseaux Sociaux</h3>
-              <p class="text-lg font-serif text-highlight">@loreedesign</p>
+            <div class="flex-grow">
+              <p class="text-xs font-sans text-primary/60 uppercase tracking-widest mb-1">Instagram</p>
+              <p class="text-xl font-serif text-dark">Me retrouver sur Instagram : <span class="text-primary">@loree_by_aurelie</span></p>
             </div>
           </div>
         </div>
       </div>
+    )}
 
-      <form class="space-y-6">
-        <div class="grid grid-cols-2 gap-6">
-          <div class="space-y-2">
-            <label class="text-xs font-bold uppercase tracking-widest text-dark/60">Votre nom</label>
-            <input type="text" class="w-full px-6 py-4 bg-white border border-zinc-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm" placeholder="Nom Complet" />
+    {part === 'form' && (
+      <div class="flex-grow flex flex-col">
+        <form 
+          action="mailto:aurelie.magontier@loreedesign.com" 
+          method="POST" 
+          enctype="text/plain"
+          class="space-y-4 bg-highlight/20 p-8 rounded-[2.5rem] border border-highlight/30"
+        >
+          <div class="space-y-4">
+            <div class="space-y-1 font-sans">
+              <label class="text-xs font-bold uppercase tracking-widest text-dark/60 ml-2">Votre nom</label>
+              <input type="text" name="nom" required class="w-full px-6 py-4 bg-white border border-zinc-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm font-sans text-sm" placeholder="Nom Complet" />
+            </div>
+            <div class="space-y-1 font-sans">
+              <label class="text-xs font-bold uppercase tracking-widest text-dark/60 ml-2">Votre email</label>
+              <input type="email" name="email" required class="w-full px-6 py-4 bg-white border border-zinc-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm font-sans text-sm" placeholder="Email" />
+            </div>
+            <div class="space-y-1 font-sans">
+              <label class="text-xs font-bold uppercase tracking-widest text-dark/60 ml-2">Votre message</label>
+              <textarea name="message" required class="w-full px-6 py-4 bg-white border border-zinc-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm h-32 resize-none font-sans text-sm" placeholder="Comment puis-je vous aider ?"></textarea>
+            </div>
           </div>
-          <div class="space-y-2">
-            <label class="text-xs font-bold uppercase tracking-widest text-dark/60">Votre email</label>
-            <input type="email" class="w-full px-6 py-4 bg-white border border-zinc-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm" placeholder="Email" />
-          </div>
-        </div>
-        <div class="space-y-2">
-          <label class="text-xs font-bold uppercase tracking-widest text-dark/60">Votre message</label>
-          <textarea class="w-full px-6 py-4 bg-white border border-zinc-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm h-32 resize-none" placeholder="Comment puis-je vous aider ?"></textarea>
-        </div>
-        <button type="submit" class="w-full py-5 bg-primary text-white rounded-2xl font-bold uppercase tracking-widest text-sm hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
-          Envoyer le message
-        </button>
-      </form>
-    </div>
+          <button type="submit" class="w-full py-5 bg-primary text-white rounded-2xl font-bold uppercase tracking-widest text-sm hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 font-sans transform hover:-translate-y-1">
+            Envoyer le message
+          </button>
+        </form>
+      </div>
+    )}
   </div>
+
+  <!-- Page Navigation Buttons -->
+  {side === 'left' && (
+    <button class="st-ignore btn-prev-page absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+  )}
+  {side === 'right' && (
+    <button class="st-ignore btn-next-page absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  )}
 </div>

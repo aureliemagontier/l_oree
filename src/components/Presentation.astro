@@ -1,57 +1,97 @@
 ---
-import profil2 from '../assets/profil2.jpeg';
+interface Props {
+  part?: 1 | 2;
+}
+
+const { part = 1 } = Astro.props;
 ---
 <div class="magazine-page h-full">
   <div class="page-content flex flex-col h-full">
-    <div class="mb-8">
-      <h2 class="text-3xl font-serif font-bold text-primary mb-2">Présentation</h2>
-      <div class="h-1 w-16 bg-primary"></div>
-    </div>
-
-    <div class="scrollable-content flex-grow">
-      <div class="mb-8 rounded-2xl overflow-hidden shadow-lg max-w-[280px] mx-auto border-4 border-white">
-        <img src={profil2.src} alt="Aurélie Magontier" class="w-full h-40 object-cover" />
-      </div>
-      <div class="prose prose-zinc prose-sm leading-relaxed text-dark/80 italic mb-12">
-        <p class="mb-4">
-          "L'Orée est née pour accompagner celles et ceux qui créent, fabriquent et entreprennent avec le cœur.
-        </p>
-        <p class="mb-4">
-          J'y mêle communication, image et sens, avec une attention particulière pour les petites entreprises, les artisans, et toutes les personnes qui avancent souvent sans le luxe du temps ni des outils professionnels.
-        </p>
-        <p class="mb-4">
-          À L'Orée, je transforme la complexité en clarté, les idées en récits, et les doutes en chemins. J’aime rendre les choses simples, accessibles et profondément humaines, avec cette petite dose de bonne humeur qui allège les journées et donne envie d’avancer. Mon intention est que chacun puisse raconter son histoire avec justesse, douceur, authenticité… et un sourire en plus.
-        </p>
-        <p class="mb-4">
-          Parce que les petites entreprises courent après les heures, je deviens cette respiration calme, ce soutien discret et positif qui leur permet de se concentrer sur leur savoir‑faire pendant que je prends soin de leur image. J’apporte de la lumière, de la fluidité, et parfois même un peu d’enthousiasme là où la fatigue s’installe.
-        </p>
-        <p class="mb-4">
-          Je crée des espaces où les projets peuvent s’épanouir, où les voix trouvent leur forme, où les identités deviennent une évidence — vivantes, lumineuses, confiantes.
-        </p>
-        <p class="mb-4">
-          L'Orée, c'est un passage.
-        </p>
-        <p class="mb-4">
-          Un lieu où l’on dépose ce qui encombre, où l’on éclaire ce qui compte, et où chaque projet retrouve sa juste place — avec un souffle joyeux et une énergie qui invite à avancer.
-        </p>
-        <p class="font-bold text-dark mt-8 border-t border-zinc-200 pt-4">
-          Un appui discret, une énergie joyeuse, un pas vers l’essentiel.
-        </p>
-        <p class="text-right font-serif text-lg text-primary mt-4">
-          Aurélie 
-        </p>
-      </div>
-
-      <div class="grid grid-cols-2 gap-4 mt-8">
-        <div class="p-4 bg-secondary/20 rounded-lg border border-secondary/30">
-          <h3 class="text-xs font-bold uppercase tracking-widest text-dark/60 mb-2">Philosophie</h3>
-          <p class="text-sm font-serif italic">Transformer la complexité en clarté</p>
+    {part === 1 && (
+      <>
+        <div class="mb-8">
+          <h2 class="text-3xl font-serif font-bold text-primary mb-2">Qui suis-je ?</h2>
+          <div class="h-1 w-16 bg-primary"></div>
         </div>
-        <div class="p-4 bg-primary/10 rounded-lg border border-primary/20">
-          <h3 class="text-xs font-bold uppercase tracking-widest text-dark/60 mb-2">Expertise</h3>
-          <p class="text-sm font-serif italic">Identité de marque & Stratégie</p>
+
+        <div class="flex-grow relative">
+          <div class="prose prose-zinc text-[12px] leading-relaxed text-dark/80 font-poppins italic mb-12">
+            <p class="mb-4 font-poppins">
+              Je travaille avec des petites entreprises, des indépendants, des créateurs qui portent leur projet à bout de bras.
+              Ils ont des idées magnifiques, une énergie sincère… mais souvent trop peu de temps pour façonner une image qui leur ressemble vraiment.
+            </p>
+            <p class="mb-4 font-poppins">
+              Alors j’entre en scène.
+              Pas pour prendre la place, mais pour offrir un espace.
+              Un espace où l’on respire, où l’on trie, où l’on comprend ce que le projet veut dire, vraiment.
+            </p>
+            <p class="mb-4 font-poppins">
+              Mon expertise, c’est de traduire l’humain.
+              De transformer une sensibilité, une intention, une histoire en mots, en images, en structures qui touchent juste.
+              Je ne crée pas seulement des identités visuelles ou des pages web :
+              je révèle ce qui était déjà là, mais qui n’avait pas encore trouvé sa forme.
+            </p>
+            <p class="mt-6 mb-4 font-poppins border-t border-[#79B6D8]/30 pt-6">
+              L’Orée, c’est ce passage.
+            </p>
+            <p class="mb-4 font-poppins">
+              Un lieu où l’on dépose ce qui encombre.
+              Où l’on éclaire ce qui compte.
+              Où l’on remet de la douceur dans le processus, de la clarté dans les idées, de la présence dans chaque detail.
+            </p>
+            <p class="mb-4 font-poppins">
+              Mon travail est technique, oui : branding, structure, écriture, direction artistique.
+              Mais il est surtout humain.
+              Parce que derrière chaque projet, il y a une personne qui mérite d’être vue, entendue, comprise.
+            </p>
+          </div>
         </div>
-      </div>
-    </div>
+      </>
+    )}
+
+    {part === 2 && (
+      <>
+        <div class="flex-grow relative pt-8">
+          <div class="prose prose-zinc text-[12px] leading-relaxed text-dark/80 font-poppins italic mb-12">
+            <p class="mb-4 font-poppins">
+              J’aime écouter les nuances, les hésitations, les élans.
+              J’aime sentir ce qui cherche à émerger.
+              Et j’aime accompagner ce moment où tout s’aligne — où la personne se reconnaît enfin dans ce que son entreprise montre au monde.
+            </p>
+            <p class="font-bold text-dark mt-8 border-t border-[#79B6D8]/30 pt-4 font-sans">
+              Un soutien discret.
+              Une expertise sensible.
+              Un chemin vers l’essentiel.
+            </p>
+            <p class="text-right font-serif text-lg text-primary mt-4">
+              Aurélie
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mt-8">
+            <div class="p-4 bg-[#F5EBC8] rounded-lg border border-secondary/30">
+              <h3 class="text-xs font-bold uppercase tracking-widest text-dark/60 mb-2 font-sans">Philosophie</h3>
+              <p class="text-[12px] font-poppins italic">Transformer la complexité en clarté</p>
+            </div>
+            <div class="p-4 bg-primary/10 rounded-lg border border-primary/20">
+              <h3 class="text-xs font-bold uppercase tracking-widest text-dark/60 mb-2 font-sans">Expertise</h3>
+              <p class="text-[12px] font-poppins italic">Identité de marque, Stratégie, Création graphique & Sites Web</p>
+            </div>
+          </div>
+        </div>
+      </>
+    )}
   </div>
+
+  <!-- Page Navigation Buttons -->
+  {part === 1 && (
+    <button class="st-ignore btn-prev-page absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+  )}
+  {part === 2 && (
+    <button class="st-ignore btn-next-page absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  )}
 </div>

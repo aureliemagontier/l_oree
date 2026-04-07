@@ -1,101 +1,145 @@
 ---
 interface Props {
-  packIndex: number;
+  packIndex?: number;
   showFAQ?: boolean;
+  onlyFAQ?: boolean;
+  side?: 'left' | 'right';
 }
 
-const { packIndex, showFAQ = false } = Astro.props;
+const { packIndex = 0, showFAQ = false, onlyFAQ = false, side = 'left' } = Astro.props;
 
 const packs = [
   {
-    title: "L'Orée Web",
-    price: "2000€",
-    subtitle: "Site Web Complet & Professionnel",
-    popular: true,
+    title: "L’Éclat Express",
+    price: "250 €",
+    subtitle: "La mini‑identité visuelle claire, rapide et lumineuse.",
+    color: "bg-highlight/30",
+    borderColor: "border-highlight",
+    iconColor: "text-primary",
     features: [
-      "Site web complet",
-      "Responsive design",
-      "5-6 pages",
-      "SEO optimisé",
-      "Maintenance 3 mois"
+      "Palette de couleurs intuitive",
+      "Duo typographique harmonisé",
+      "Mini‑logo ou monogramme",
+      "Moodboard directionnel",
+      "Mini‑guide PDF (3 pages)"
     ],
-    buttonText: "Sélectionner"
+    buttonText: "Je veux mon Éclat Express"
   },
   {
-    title: "L'Orée Signature",
-    price: "Sur devis",
-    subtitle: "Solution Complète sur Mesure",
-    popular: false,
+    title: "La Voix Juste",
+    price: "220 €",
+    subtitle: "Le message qui te ressemble, clair et émotionnel.",
+    color: "bg-accent/10",
+    borderColor: "border-accent/30",
+    iconColor: "text-accent",
     features: [
-      "Identité visuelle complète",
-      "Logo + Charte graphique",
-      "Tous les supports",
-      "Communication intégrée"
+      "Phrase signature",
+      "Pitch clair (2–3 phrases)",
+      "Mini‑manifeste",
+      "3 messages prêts à l’emploi"
     ],
-    buttonText: "Devis"
+    buttonText: "Je veux trouver ma Voix Juste"
+  },
+  {
+    title: "Le Plan Lumineux",
+    price: "150 €",
+    subtitle: "Une mini‑stratégie de communication douce, simple et actionnable.",
+    color: "bg-primary/10",
+    borderColor: "border-primary/30",
+    iconColor: "text-primary",
+    features: [
+      "Analyse éclair",
+      "3 axes de communication",
+      "3 formats de contenu",
+      "Mini‑calendrier 2 semaines",
+      "PDF récapitulatif"
+    ],
+    buttonText: "Je veux mon Plan Lumineux",
+    extra: "+30 € suivi 7 jours"
+  },
+  {
+    title: "Sérénité Plus",
+    price: "150 €",
+    subtitle: "L’accompagnement continu pour un site vivant.",
+    color: "bg-secondary/10",
+    borderColor: "border-secondary/30",
+    iconColor: "text-secondary",
+    features: [
+      "Hébergement managé premium",
+      "Sauvegardes quotidiennes",
+      "Mises à jour & sécurité",
+      "30 min de retouches mensuelles",
+      "Rapport de performance"
+    ],
+    buttonText: "Me contacter"
   }
 ];
 
 const pack = packs[packIndex];
 
 const faqs = [
-  { q: "Puis-je combiner les packs ?", a: "Absolument ! Formules sur mesure selon vos besoins." },
-  { q: "Consultation gratuite ?", a: "Oui ! Premier rendez-vous pour comprendre votre projet." },
-  { q: "Délais ?", a: "2 à 8 semaines selon le pack et la complexité." },
-  { q: "Frais cachés ?", a: "Non, tarifs transparents et clairs dès le départ." }
+  { q: "Puis-je combiner les packs ?", a: "Oui ! Coupler l'Éclat Express avec la Voix Juste est très pertinent." },
+  { q: "Sur mesure ?", a: "Si votre projet demande plus de profondeur, contactez-moi." }
 ];
 ---
 <div class="magazine-page h-full">
   <div class="page-content h-full">
-    {packIndex === 0 && (
-      <div class="mb-12">
-        <h2 class="text-3xl font-serif font-bold text-primary mb-2">Nos Packs</h2>
-        <p class="text-sm text-dark/60 uppercase tracking-widest font-bold">Choisissez le pack qui correspond à vos besoins</p>
-        <div class="h-1 w-16 bg-primary mt-2"></div>
-      </div>
+    {!onlyFAQ && (
+      <>
+        <div class="mb-8">
+          <h2 class="text-3xl font-serif font-bold text-primary mb-1">{pack.title}</h2>
+          <p class="text-sm font-poppins italic text-dark/60 mb-3 leading-relaxed">{pack.subtitle}</p>
+          <div class="h-1 w-12 bg-primary/40"></div>
+        </div>
+
+        <div class={`p-10 rounded-[2.5rem] border border-zinc-100 ${pack.color} relative overflow-hidden flex-grow flex flex-col shadow-sm`}>
+          <div class="mb-8">
+            <div class="text-3xl font-serif font-bold text-dark mb-1">{pack.price}</div>
+            {pack.extra && <p class="text-xs font-poppins italic text-dark/50">{pack.extra}</p>}
+          </div>
+
+          <ul class="space-y-5 mb-10 flex-grow">
+            {pack.features.map(feature => (
+              <li class="flex items-start gap-4 text-[14px] text-dark/80 font-sans leading-relaxed">
+                <div class={`w-6 h-6 rounded-full flex items-center justify-center ${pack.iconColor} bg-white/50 shrink-0 mt-0.5 shadow-sm`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                </div>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <button class="w-full py-5 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all font-sans bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10 transform hover:-translate-y-0.5">
+            {pack.buttonText}
+          </button>
+        </div>
+      </>
     )}
 
-    <div class={`p-8 rounded-3xl border-2 ${pack.popular ? 'border-primary bg-white shadow-xl' : 'border-zinc-100 bg-zinc-50 shadow-sm'} relative overflow-hidden`}>
-      {pack.popular && (
-        <div class="absolute top-0 right-0 bg-primary text-white px-6 py-1 text-[10px] font-black uppercase tracking-widest transform rotate-45 translate-x-6 translate-y-4">
-          Populaire
-        </div>
-      )}
-      
-      <div class="mb-8">
-        <h3 class="text-2xl font-serif font-bold text-dark mb-1">{pack.title}</h3>
-        <p class="text-sm text-dark/60 mb-4">{pack.subtitle}</p>
-        <div class="text-3xl font-black text-primary">{pack.price}</div>
-      </div>
-
-      <ul class="space-y-4 mb-10">
-        {pack.features.map(feature => (
-          <li class="flex items-center gap-3 text-sm text-dark/80">
-            <div class="w-5 h-5 bg-secondary/30 rounded-full flex items-center justify-center text-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
-            </div>
-            {feature}
-          </li>
-        ))}
-      </ul>
-
-      <button class={`w-full py-4 rounded-2xl font-bold uppercase tracking-widest text-sm transition-all ${pack.popular ? 'bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20' : 'bg-dark text-white hover:bg-dark/90 shadow-lg shadow-dark/20'}`}>
-        {pack.buttonText}
-      </button>
-    </div>
-
-    {showFAQ && (
-      <div class="mt-12">
-        <h3 class="text-xl font-serif font-bold text-dark mb-6 border-b border-zinc-200 pb-2">Foire Aux Questions</h3>
-        <div class="space-y-6 scrollable-content max-h-[30vh]">
+    {(showFAQ || onlyFAQ) && (
+      <div class={`${onlyFAQ ? 'flex-grow flex flex-col justify-center' : 'mt-8'}`}>
+        <h3 class={`${onlyFAQ ? 'text-3xl mb-8' : 'text-lg mb-4'} font-serif font-bold text-dark border-b border-zinc-200 pb-1`}>FAQ</h3>
+        <div class={`space-y-4 scrollable-content ${onlyFAQ ? 'max-h-[60vh]' : 'max-h-[20vh]'}`}>
           {faqs.map(faq => (
             <div>
-              <h4 class="text-sm font-bold text-primary mb-1">{faq.q}</h4>
-              <p class="text-xs text-dark/70 leading-relaxed italic">{faq.a}</p>
+              <h4 class={`${onlyFAQ ? 'text-sm' : 'text-[10px]'} font-bold text-primary mb-0.5 font-sans uppercase tracking-tighter`}>{faq.q}</h4>
+              <p class={`${onlyFAQ ? 'text-xs' : 'text-[10px]'} text-dark/70 leading-relaxed italic font-poppins`}>{faq.a}</p>
             </div>
           ))}
         </div>
       </div>
     )}
   </div>
+
+  <!-- Page Navigation Buttons -->
+  {side === 'left' && (
+    <button class="st-ignore btn-prev-page absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+  )}
+  {side === 'right' && (
+    <button class="st-ignore btn-next-page absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  )}
 </div>
