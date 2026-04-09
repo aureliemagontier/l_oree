@@ -2,12 +2,13 @@
 interface Props {
   part?: 'form' | 'info';
   side?: 'left' | 'right';
+  pageNumber?: number;
 }
 
-const { part = 'form', side = 'left' } = Astro.props;
+const { part = 'form', side = 'left', pageNumber } = Astro.props;
 ---
-<div class="magazine-page h-full">
-  <div class="page-content h-full flex flex-col">
+<div class="magazine-page h-full !overflow-visible">
+  <div class="page-content h-full flex flex-col relative">
     {part === 'form' && (
       <div class="mb-8">
         <h2 class="text-3xl font-serif font-bold text-primary mb-2">Me Contacter</h2>
@@ -79,16 +80,20 @@ const { part = 'form', side = 'left' } = Astro.props;
         </form>
       </div>
     )}
+    {pageNumber && (
+      <div class={`absolute bottom-4 ${side === 'left' ? 'left-4' : 'right-4'} text-[10px] font-serif text-black italic`}>
+        {pageNumber}
+      </div>
+    )}
   </div>
-
   <!-- Page Navigation Buttons -->
   {side === 'left' && (
-    <button class="st-ignore btn-prev-page absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
+    <button class="st-ignore btn-prev-page absolute -left-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
     </button>
   )}
   {side === 'right' && (
-    <button class="st-ignore btn-next-page absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
+    <button class="st-ignore btn-next-page absolute -right-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
     </button>
   )}

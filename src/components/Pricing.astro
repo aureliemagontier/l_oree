@@ -1,12 +1,11 @@
 ---
 interface Props {
   packIndex?: number;
-  showFAQ?: boolean;
-  onlyFAQ?: boolean;
   side?: 'left' | 'right';
+  pageNumber?: number;
 }
 
-const { packIndex = 0, showFAQ = false, onlyFAQ = false, side = 'left' } = Astro.props;
+const { packIndex = 0, side = 'left', pageNumber } = Astro.props;
 
 const packs = [
   {
@@ -29,8 +28,8 @@ const packs = [
     title: "La Voix Juste",
     price: "220 €",
     subtitle: "Le message qui te ressemble, clair et émotionnel.",
-    color: "bg-accent/10",
-    borderColor: "border-accent/30",
+    color: "bg-highlight/30",
+    borderColor: "border-highlight",
     iconColor: "text-accent",
     features: [
       "Phrase signature",
@@ -44,8 +43,8 @@ const packs = [
     title: "Le Plan Lumineux",
     price: "150 €",
     subtitle: "Une mini‑stratégie de communication douce, simple et actionnable.",
-    color: "bg-primary/10",
-    borderColor: "border-primary/30",
+    color: "bg-highlight/30",
+    borderColor: "border-highlight",
     iconColor: "text-primary",
     features: [
       "Analyse éclair",
@@ -61,8 +60,8 @@ const packs = [
     title: "Sérénité Plus",
     price: "150 €",
     subtitle: "L’accompagnement continu pour un site vivant.",
-    color: "bg-secondary/10",
-    borderColor: "border-secondary/30",
+    color: "bg-highlight/30",
+    borderColor: "border-highlight",
     iconColor: "text-secondary",
     features: [
       "Hébergement managé premium",
@@ -76,61 +75,42 @@ const packs = [
 ];
 
 const pack = packs[packIndex];
-
-const faqs = [
-  { q: "Puis-je combiner les packs ?", a: "Oui ! Coupler l'Éclat Express avec la Voix Juste est très pertinent." },
-  { q: "Sur mesure ?", a: "Si votre projet demande plus de profondeur, contactez-moi." }
-];
 ---
 <div class="magazine-page h-full">
-  <div class="page-content h-full">
-    {!onlyFAQ && (
-      <>
-        <div class="mb-8">
-          <h2 class="text-3xl font-serif font-bold text-primary mb-1">{pack.title}</h2>
-          <p class="text-sm font-poppins italic text-dark/60 mb-3 leading-relaxed">{pack.subtitle}</p>
-          <div class="h-1 w-12 bg-primary/40"></div>
-        </div>
+  <div class="page-content h-full relative">
+    <div class="mb-8">
+      <h2 class="text-3xl font-serif font-bold text-primary mb-1">{pack.title}</h2>
+      <p class="text-sm font-poppins italic text-dark/60 mb-3 leading-relaxed">{pack.subtitle}</p>
+      <div class="h-1 w-12 bg-primary/40"></div>
+    </div>
 
-        <div class={`p-10 rounded-[2.5rem] border border-zinc-100 ${pack.color} relative overflow-hidden flex-grow flex flex-col shadow-sm`}>
-          <div class="mb-8">
-            <div class="text-3xl font-serif font-bold text-dark mb-1">{pack.price}</div>
-            {pack.extra && <p class="text-xs font-poppins italic text-dark/50">{pack.extra}</p>}
-          </div>
+    <div class={`p-10 rounded-[2.5rem] border border-zinc-100 ${pack.color} relative overflow-hidden flex-grow flex flex-col shadow-sm`}>
+      <div class="mb-8">
+        <div class="text-3xl font-serif font-bold text-dark mb-1">{pack.price}</div>
+        {pack.extra && <p class="text-xs font-poppins italic text-dark/50">{pack.extra}</p>}
+      </div>
 
-          <ul class="space-y-5 mb-10 flex-grow">
-            {pack.features.map(feature => (
-              <li class="flex items-start gap-4 text-[14px] text-dark/80 font-sans leading-relaxed">
-                <div class={`w-6 h-6 rounded-full flex items-center justify-center ${pack.iconColor} bg-white/50 shrink-0 mt-0.5 shadow-sm`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
-                </div>
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-
-          <button class="w-full py-5 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all font-sans bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10 transform hover:-translate-y-0.5">
-            {pack.buttonText}
-          </button>
-        </div>
-      </>
-    )}
-
-    {(showFAQ || onlyFAQ) && (
-      <div class={`${onlyFAQ ? 'flex-grow flex flex-col justify-center' : 'mt-8'}`}>
-        <h3 class={`${onlyFAQ ? 'text-3xl mb-8' : 'text-lg mb-4'} font-serif font-bold text-dark border-b border-zinc-200 pb-1`}>FAQ</h3>
-        <div class={`space-y-4 scrollable-content ${onlyFAQ ? 'max-h-[60vh]' : 'max-h-[20vh]'}`}>
-          {faqs.map(faq => (
-            <div>
-              <h4 class={`${onlyFAQ ? 'text-sm' : 'text-[10px]'} font-bold text-primary mb-0.5 font-sans uppercase tracking-tighter`}>{faq.q}</h4>
-              <p class={`${onlyFAQ ? 'text-xs' : 'text-[10px]'} text-dark/70 leading-relaxed italic font-poppins`}>{faq.a}</p>
+      <ul class="space-y-5 mb-10 flex-grow">
+        {pack.features.map(feature => (
+          <li class="flex items-start gap-4 text-[14px] text-dark/80 font-sans leading-relaxed">
+            <div class={`w-6 h-6 rounded-full flex items-center justify-center ${pack.iconColor} bg-white/80 shrink-0 mt-0.5 shadow-sm`}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
             </div>
-          ))}
-        </div>
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+
+      <button class="w-full py-5 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all font-sans bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10 transform hover:-translate-y-0.5">
+        {pack.buttonText}
+      </button>
+    </div>
+    {pageNumber && (
+      <div class={`absolute bottom-4 ${side === 'left' ? 'left-4' : 'right-4'} text-[10px] font-serif text-black italic`}>
+        {pageNumber}
       </div>
     )}
   </div>
-
   <!-- Page Navigation Buttons -->
   {side === 'left' && (
     <button class="st-ignore btn-prev-page absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">

@@ -1,12 +1,13 @@
 ---
 interface Props {
   part?: 1 | 2;
+  pageNumber?: number;
 }
 
-const { part = 1 } = Astro.props;
+const { part = 1, pageNumber } = Astro.props;
 ---
 <div class="magazine-page h-full">
-  <div class="page-content flex flex-col h-full">
+  <div class="page-content flex flex-col h-full relative">
     {part === 1 && (
       <>
         <div class="mb-8">
@@ -81,8 +82,12 @@ const { part = 1 } = Astro.props;
         </div>
       </>
     )}
+    {pageNumber && (
+      <div class={`absolute bottom-4 ${part === 1 ? 'left-4' : 'right-4'} text-[10px] font-serif text-black italic`}>
+        {pageNumber}
+      </div>
+    )}
   </div>
-
   <!-- Page Navigation Buttons -->
   {part === 1 && (
     <button class="st-ignore btn-prev-page absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
