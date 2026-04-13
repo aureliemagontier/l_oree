@@ -83,11 +83,23 @@ import Footer from '../components/Footer.astro';
 
 				pageFlip.loadFromHTML(document.querySelectorAll('.magazine-page'));
 
+				function updateVisibility() {
+					const page = parseInt(pageNumberElement.textContent || '1');
+					const hide = page >= 2;
+					const verticalUrl = document.getElementById('vertical-url');
+					const fakeBarcode = document.getElementById('fake-barcode');
+					if (verticalUrl) verticalUrl.style.display = hide ? 'none' : '';
+					if (fakeBarcode) fakeBarcode.style.display = hide ? 'none' : '';
+				}
+
 				pageFlip.on('flip', (e) => {
 					if (pageNumberElement) {
 						pageNumberElement.innerText = (e.data + 1).toString();
 					}
+					updateVisibility();
 				});
+
+				updateVisibility(); // initial
 
 				prevBtn?.addEventListener('click', () => {
 					pageFlip.flipPrev();

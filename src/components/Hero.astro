@@ -1,7 +1,9 @@
 ---
 import aurelieImage from '../assets/aurelie.jpg';
+import Navigation from './Navigation.astro';
 ---
 <div class="magazine-page h-full relative overflow-hidden" data-density="hard">
+ 
   <!-- Full Page Background Image -->
   <div class="absolute inset-0 z-0 bg-dark">
     <img 
@@ -12,17 +14,7 @@ import aurelieImage from '../assets/aurelie.jpg';
   </div>
 
   <div class="relative z-10 page-content flex flex-col justify-between items-center text-center h-full font-serif">
-    <!-- Navigation Bar -->
-    <nav class="w-full flex justify-center items-center mb-8">
-      <div class="flex space-x-0 text-[8px] uppercase tracking-[0.1em] text-highlight/90 font-black">
-        <a href="#" class="px-1 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Accueil</a>
-        <a href="#" class="px-1 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Qui suis-je?</a>
-        <a href="#" class="px-1 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Ce que je crée</a>
-        <a href="#" class="px-1 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Offres signature</a>
-        <a href="#" class="px-1 py-1 border border-transparent hover:border-accent hover:ring-1 hover:ring-accent hover:ring-offset-1 hover:ring-offset-dark hover:bg-accent/20 transition-all whitespace-nowrap">Contactez-moi</a>
-      </div>
-    </nav>
-
+  <Navigation />
     <div class="w-full pt-[2px] relative flex-grow">
       <h1 class="text-6xl md:text-8xl font-serif font-black tracking-tighter mb-4 text-primary drop-shadow-2xl">
         L'ORÉE
@@ -63,12 +55,12 @@ import aurelieImage from '../assets/aurelie.jpg';
   </div>
 
   <!-- Vertical URL -->
-  <div class="absolute bottom-[66px] right-4 text-[10px] uppercase tracking-[0.5em] text-[#F5EBC8] font-black [writing-mode:vertical-rl] rotate-180">
+  <div id="vertical-url" class="absolute bottom-[66px] right-4 text-[10px] uppercase tracking-[0.5em] text-[#F5EBC8] font-black [writing-mode:vertical-rl] rotate-180">
     www.loreedesign.fr
   </div>
 
   <!-- Fake Barcode -->
-  <div class="absolute bottom-4 right-2 px-1 py-0.5 flex flex-col items-end z-20">
+  <div id="fake-barcode" class="absolute bottom-4 right-2 px-1 py-0.5 flex flex-col items-end z-20">
     <div class="flex h-8 items-end gap-[1px]">
       <div class="w-[4px] h-full bg-black"></div>
       <div class="w-[1px] h-full bg-black"></div>
@@ -93,8 +85,4 @@ import aurelieImage from '../assets/aurelie.jpg';
     </div>
   </div>
 
-  <!-- Page Navigation Buttons -->
-  <button class="st-ignore btn-next-page absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-  </button>
 </div>

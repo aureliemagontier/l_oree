@@ -1,4 +1,6 @@
 ---
+import Navigation from './Navigation.astro';
+
 interface Props {
   packIndex?: number;
   side?: 'left' | 'right';
@@ -78,7 +80,8 @@ const pack = packs[packIndex];
 ---
 <div class="magazine-page h-full">
   <div class="page-content h-full relative flex flex-col">
-    <div class="mb-8 min-h-[160px]">
+    {side === 'right' && <Navigation />}
+    <div class="mb-8 min-h-[60px]">
       <h2 class="text-3xl font-serif font-bold text-primary mb-1">{pack.title}</h2>
       <p class="text-sm font-poppins italic text-dark/60 mb-3 leading-relaxed">{pack.subtitle}</p>
       <div class="h-1 w-12 bg-primary/40"></div>
@@ -90,7 +93,7 @@ const pack = packs[packIndex];
         {pack.extra && <p class="text-xs font-poppins italic text-dark/50">{pack.extra}</p>}
       </div>
 
-      <ul class="space-y-5 mb-10 flex-grow">
+      <ul class="space-y-3 mb-10 flex-grow">
         {pack.features.map(feature => (
           <li class="flex items-start gap-4 text-[14px] text-dark/80 font-sans leading-relaxed">
             <div class={`w-6 h-6 rounded-full flex items-center justify-center ${pack.iconColor} bg-white/80 shrink-0 mt-0.5 shadow-sm`}>
@@ -111,15 +114,5 @@ const pack = packs[packIndex];
       </div>
     )}
   </div>
-  <!-- Page Navigation Buttons -->
-  {side === 'left' && (
-    <button class="st-ignore btn-prev-page absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-    </button>
-  )}
-  {side === 'right' && (
-    <button class="st-ignore btn-next-page absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-    </button>
-  )}
+
 </div>

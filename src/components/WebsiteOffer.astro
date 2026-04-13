@@ -1,4 +1,6 @@
 ---
+import Navigation from './Navigation.astro';
+
 interface Props {
   part?: 1 | 2;
   side?: 'left' | 'right';
@@ -9,6 +11,7 @@ const { part = 1, side = 'right', pageNumber } = Astro.props;
 ---
 <div class="magazine-page h-full">
   <div class="page-content h-full flex flex-col relative">
+    {side === 'right' && <Navigation />}
     {part === 1 && (
       <>
         <!-- Header -->
@@ -89,7 +92,7 @@ const { part = 1, side = 'right', pageNumber } = Astro.props;
 
     {part === 2 && (
       <div class="flex flex-col justify-center flex-grow space-y-8">
-        <!-- Le processus -->
+        <!-- Le processus 
         <div class="p-8 rounded-[2.5rem] bg-accent/10 border border-accent/20 relative overflow-hidden w-full">
           <h3 class="text-xl font-serif font-bold text-dark mb-6">Le processus</h3>
           <ol class="space-y-3 text-[13px] font-sans text-dark/80">
@@ -118,7 +121,7 @@ const { part = 1, side = 'right', pageNumber } = Astro.props;
               <span>Mise en ligne + guide d’autonomie</span>
             </li>
           </ol>
-        </div>
+        </div> -->
 
         <!-- Pour qui ? -->
         <div class="relative px-6">
@@ -156,15 +159,4 @@ const { part = 1, side = 'right', pageNumber } = Astro.props;
       </div>
     )}
   </div>
-  <!-- Page Navigation Buttons -->
-  {side === 'left' && (
-    <button class="st-ignore btn-prev-page absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-    </button>
-  )}
-  {side === 'right' && (
-    <button class="st-ignore btn-next-page absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-highlight shadow-lg border-2 border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-highlight transition-all z-50">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-    </button>
-  )}
 </div>
