@@ -3,11 +3,15 @@ interface Props {
   pageNumber?: number;
 }
 
+import BackgroundImage from '../assets/aurelie.jpg';
+
 const { pageNumber } = Astro.props;
 ---
 <div class="magazine-page h-full" data-density="hard">
-  <div class="page-content flex flex-col justify-center items-center text-center bg-dark text-light relative">
-    <div class="w-full max-w-xs">
+  <div class="page-content flex flex-col justify-center items-center text-center text-light relative overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style={`background-image: url(${BackgroundImage.src}); filter: blur(6px); transform: scale(1.02);`} />
+    <div class="absolute inset-0 bg-black/30" />
+    <div class="relative w-full max-w-xs">
       <div class="h-px w-full bg-highlight/20 mb-12"></div>
       
       <h2 class="text-4xl font-serif font-black tracking-tighter mb-4 text-highlight">
@@ -39,7 +43,7 @@ const { pageNumber } = Astro.props;
       </div>
     </div>
     {pageNumber && (
-      <div class="absolute bottom-4 left-4 text-[10px] font-serif text-black italic">
+      <div class="absolute bottom-4 left-4 text-[10px] font-serif text-white/90 italic">
         {pageNumber}
       </div>
     )}
