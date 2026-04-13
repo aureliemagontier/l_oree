@@ -42,7 +42,7 @@ const packs = [
   {
     title: "Le Plan Lumineux",
     price: "150 €",
-    subtitle: "Une mini‑stratégie de communication douce, simple et actionnable.",
+    subtitle: "Une mini‑stratégie de communication douce et simple.",
     color: "bg-highlight/30",
     borderColor: "border-highlight",
     iconColor: "text-primary",
@@ -77,14 +77,14 @@ const packs = [
 const pack = packs[packIndex];
 ---
 <div class="magazine-page h-full">
-  <div class="page-content h-full relative">
-    <div class="mb-8">
+  <div class="page-content h-full relative flex flex-col">
+    <div class="mb-8 min-h-[160px]">
       <h2 class="text-3xl font-serif font-bold text-primary mb-1">{pack.title}</h2>
       <p class="text-sm font-poppins italic text-dark/60 mb-3 leading-relaxed">{pack.subtitle}</p>
       <div class="h-1 w-12 bg-primary/40"></div>
     </div>
 
-    <div class={`p-10 rounded-[2.5rem] border border-zinc-100 ${pack.color} relative overflow-hidden flex-grow flex flex-col shadow-sm`}>
+    <div class={`p-10 rounded-[2.5rem] border border-zinc-100 ${pack.color} relative overflow-hidden flex-1 flex flex-col shadow-sm`}>
       <div class="mb-8">
         <div class="text-3xl font-serif font-bold text-dark mb-1">{pack.price}</div>
         {pack.extra && <p class="text-xs font-poppins italic text-dark/50">{pack.extra}</p>}
@@ -122,5 +122,4 @@ const pack = packs[packIndex];
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
     </button>
   )}
-
 </div>
