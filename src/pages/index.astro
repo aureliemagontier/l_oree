@@ -13,12 +13,12 @@ import Footer from '../components/Footer.astro';
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<meta name="generator" content={Astro.generator} />
 		<title>L'orée | Édition 2026</title>
 	</head>
-	<body class="bg-zinc-100 text-dark min-h-screen flex items-center justify-center p-4 md:p-8 overflow-hidden">
-		<div id="magazine-container" class="relative w-full max-w-5xl aspect-[1.5/1] mx-auto">
+	<body class="bg-zinc-100 text-dark min-h-screen flex items-center justify-center p-4 md:p-8 overflow-auto">
+		<div id="magazine-container" class="relative w-full max-w-5xl mx-auto aspect-[1.5/1] max-h-[calc(100vh-5rem)] md:max-h-[calc(100vh-3rem)]">
 			<div id="magazine" class="st-page-flip">
 				<Hero />
 				<Presentation part={1} pageNumber={1} />
@@ -37,7 +37,7 @@ import Footer from '../components/Footer.astro';
 			</div>
 
 			<!-- Navigation Controls -->
-			<div class="absolute -bottom-16 left-0 right-0 flex justify-center gap-8 items-center pt-4">
+			<div class="absolute left-0 right-0 bottom-4 md:-bottom-16 flex justify-center gap-8 items-center pt-4">
 				<button id="prev-page" class="p-3 rounded-full bg-white shadow-lg border border-zinc-200 text-primary hover:bg-primary hover:text-white transition-all">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
 				</button>
@@ -65,14 +65,14 @@ import Footer from '../components/Footer.astro';
 					width: 550, // base page width
 					height: 733, // base page height
 					size: "stretch",
-					minWidth: 315,
+					minWidth: 260,
 					maxWidth: 1000,
-					minHeight: 420,
+					minHeight: 360,
 					maxHeight: 1350,
 					maxShadowOpacity: 0.5,
 					showCover: true,
-					mobileScrollSupport: false,
-					usePortrait: false,
+					mobileScrollSupport: true,
+					usePortrait: true,
 					startPage: 0,
 					drawShadow: true,
 					flippingTime: 800,
@@ -82,6 +82,16 @@ import Footer from '../components/Footer.astro';
 				});
 
 				pageFlip.loadFromHTML(document.querySelectorAll('.magazine-page'));
+
+				const magazineContainer = document.getElementById('magazine-container');
+
+				function updateMagazineHeight() {
+					if (!magazineContainer) return;
+					const reservedSpace = 120; // controls + body padding
+					const availableHeight = Math.max(360, window.innerHeight - reservedSpace);
+					magazineContainer.style.height = `${availableHeight}px`;
+					pageFlip.update();
+				}
 
 				function updateVisibility() {
 					const page = parseInt(pageNumberElement.textContent || '1');
@@ -100,6 +110,7 @@ import Footer from '../components/Footer.astro';
 				});
 
 				updateVisibility(); // initial
+				updateMagazineHeight();
 
 				prevBtn?.addEventListener('click', () => {
 					pageFlip.flipPrev();
@@ -127,7 +138,7 @@ import Footer from '../components/Footer.astro';
 
 				// Handle window resize
 				window.addEventListener('resize', () => {
-					// pageFlip.update(); // The library handles stretch automatically
+					updateMagazineHeight();
 				});
 			});
 		</script>
