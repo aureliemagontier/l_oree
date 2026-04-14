@@ -1,0 +1,112 @@
+---
+import '../styles/book.css';
+
+interface Props {
+  totalPages?: number;
+}
+// Default to 7 if not provided
+const totalPages = Astro.props.totalPages || 7;
+
+// Generate states from 0 to totalPages
+// State k means k physical pages are flipped to the left.
+const states = Array.from({ length: totalPages + 1 }).map((_, i) => i);
+
+// Generate the dynamic CSS logic for radio buttons controlling page states
+let dynamicCSS = '';
+for (let state = 0; state <= totalPages; state++) {
+  // If state is K, pages 1 to K must be flipped.
+  for (let p = 1; p <= state; p++) {
+    dynamicCSS += `input#radio-page-${state}:checked ~ .book-container #page-container-${p} { transform: rotateY(-180deg) !important; z-index: var(--flippedZ) !important; }\n`;
+    
+    // Disable interactions on the hidden front side (side and its children)
+    dynamicCSS += `input#radio-page-${state}:checked ~ .book-container #page-container-${p} .side.front { pointer-events: none !important; }\n`;
+    dynamicCSS += `input#radio-page-${state}:checked ~ .book-container #page-container-${p} .side.front a,
+                   input#radio-page-${state}:checked ~ .book-container #page-container-${p} .side.front button,
+                   input#radio-page-${state}:checked ~ .book-container #page-container-${p} .side.front label { pointer-events: none !important; }\n`;
+    
+    // Enable interactions on the now-visible back side (side and its specific interactive children)
+    dynamicCSS += `input#radio-page-${state}:checked ~ .book-container #page-container-${p} .side.back { pointer-events: auto !important; }\n`;
+    dynamicCSS += `input#radio-page-${state}:checked ~ .book-container #page-container-${p} .side.back a,
+                   input#radio-page-${state}:checked ~ .book-container #page-container-${p} .side.back button,
+                   input#radio-page-${state}:checked ~ .book-container #page-container-${p} .side.back label { pointer-events: auto !important; }\n`;
+  }
+}
+---
+
+<div class="book-wrapper relative w-full h-full flex justify-center items-center">
+
+  <!-- Contrôleur d'états global : Boutons Radios Cachés -->
+  {states.map(state => (
+    <input 
+      type="radio" 
+      name="book-state" 
+      id={`radio-page-${state}`} 
+      class="sr-only book-radio peer" 
+      checked={state === 0} 
+    />
+  ))}
+
+  <!-- Checkbox pour ouvrir/fermer le Sommaire -->
+  <input type="checkbox" id="sommaire-toggle" class="sr-only peer/sommaire" />
+  
+  <div class="book-container">
+    <slot />
+  </div>
+
+  <!-- CSS dynamique injecté statiquement au build -->
+  <style set:html={`@media (min-width: 769px) { ${dynamicCSS} }`}></style>
+
+  <!-- Modal Sommaire (Caché par défaut, affiché quand sommer-toggle est coché) -->
+  <div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md hidden peer-checked/sommaire:flex flex-col items-center justify-center p-4">
+    <div class="bg-[#f8f7f5] text-dark w-full max-w-sm rounded-[2rem] shadow-2xl p-8 relative flex flex-col items-center border border-primary/20">
+      <h2 class="text-3xl font-serif font-black tracking-tighter mb-6 text-primary border-b border-primary/20 pb-4 w-full text-center">
+        Sommaire
+      </h2>
+      
+      <div class="flex flex-col gap-4 w-full px-4 mb-8 max-h-[60vh] overflow-y-auto custom-scrollbar">
+        <!-- Mapping des pages logiques vers les états physiques (Radios) -->
+        
+        <label for="radio-page-0" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Couverture</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 1</span>
+        </label>
+        
+        <label for="radio-page-1" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Qui suis-je ?</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 2 / 3</span>
+        </label>
+        
+        <label for="radio-page-2" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Processus</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 4 / 5</span>
+        </label>
+
+        <label for="radio-page-3" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Offre Éclat Express</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 6 / 7</span>
+        </label>
+
+        <label for="radio-page-4" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Offre Plan Lumineux</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 8 / 9</span>
+        </label>
+
+        <label for="radio-page-5" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Me contacter</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 10 / 11</span>
+        </label>
+        
+        <label for="radio-page-7" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Dos Couverture</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 12</span>
+        </label>
+      </div>
+
+      <!-- Bouton fermer -->
+      <label for="sommaire-toggle" class="cursor-pointer font-serif italic text-sm text-white bg-primary px-8 py-2 rounded-full hover:bg-dark transition-colors shadow-lg">
+        Fermer
+      </label>
+    </div>
+  </div>
+
+</div>

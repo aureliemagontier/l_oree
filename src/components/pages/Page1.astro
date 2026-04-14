@@ -1,0 +1,162 @@
+---
+import Page from '../Page.astro';
+
+
+interface Props {
+  totalPages: number;
+}
+const { totalPages } = Astro.props;
+---
+
+<Page pageNumber={1} totalPages={totalPages}>
+  <!-- Ajout du slot bg-front exclusif pour un arrière-plan pleine page sans être affecté par le padding de .content -->
+  <Fragment slot="bg-front">
+    <div class="absolute inset-0 w-full h-full bg-dark z-0 pointer-events-none overflow-hidden rounded-r-lg">
+      <img 
+        src="/aurelie.jpg" 
+        alt="Aurélie Magontier" 
+        class="w-full h-full object-cover opacity-80"
+      />
+    </div>
+  </Fragment>
+
+  <Fragment slot="front">
+    <!-- Contenu principal (Au dessus de l'image) -->
+    <div class="relative z-10 h-full flex flex-col justify-between pt-4 md:pt-8 font-serif">
+      
+      <!-- Haut de page : Navigation -->
+      <div class="flex justify-center w-full">
+
+        </div>
+        
+        <!-- Milieu de page : Titre et blocs asymétriques -->
+        <div class="flex flex-col flex-grow pt-4 md:pt-[10%]">
+          <div class="flex flex-col items-center mb-8">
+            <h1 class="text-6xl md:text-8xl font-serif font-black tracking-tighter mb-4 text-primary drop-shadow-2xl">
+              L'ORÉE
+            </h1>
+
+            <div class="border-2 border-primary p-1 inline-block -mt-[15px] animate-[fade-in_1s_ease-in-out]">
+              <div class="border border-primary px-4 py-1 text-highlight bg-primary/50 uppercase tracking-[0.25em] text-xs font-black">
+                Édition 2026
+              </div>
+            </div>
+          </div>
+
+          <!-- Disposition Flex fluide pour remplacer `top-X absolute` -->
+          <div class="flex flex-col w-full gap-16 md:gap-24 animate-[fade-in_1s_ease-in-out]">
+            
+            <!-- Bloc aligné à droite (Utilisation de flex-end) -->
+            <div class="self-end text-right max-w-[260px]">
+              <p class="text-[9px] md:text-[11px] uppercase tracking-[0.2em] text-highlight font-black drop-shadow-md mb-3 leading-relaxed">
+                Identité de marque & Stratégie de communication
+              </p>
+              <p class="text-highlight/90 text-[10px] md:text-[12px] font-poppins font-light italic leading-relaxed border-r-2 border-primary pr-3">
+                Quand la stratégie rencontre la sensibilité, la marque prend vie
+              </p>
+            </div>
+
+            <!-- Bloc aligné à gauche (Utilisation de flex-start) -->
+            <div class="self-start text-left max-w-[180px] md:max-w-[220px]">
+              <p class="text-[9px] md:text-[11px] uppercase tracking-[0.2em] text-highlight font-black drop-shadow-md mb-3 leading-relaxed">
+                Création graphique & site web
+              </p>
+              <p class="text-highlight/90 text-[10px] md:text-[12px] font-poppins font-light italic leading-relaxed border-l-2 border-primary pl-3">
+                Entre intuition, sensibilité et précision : une création qui vous ressemble
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bas de page : Footer fluide avec 3 colonnes flexibles -->
+        <div class="grid grid-cols-3 items-end w-full pb-4">
+          <!-- Espace gauche vide -->
+          <div></div>
+          
+          <!-- Centre : Bouton -->
+          <div class="flex justify-center pb-2">
+            <label for="radio-page-1" id="enter-magazine" class="st-ignore border-2 border-accent p-0.5 inline-block hover:-translate-y-1 transition-transform animate-[fade-in_1s_ease-in-out] cursor-pointer" role="button" aria-label="Entrer dans le livre">
+              <div class="border border-accent px-4 py-1.5 text-accent bg-[#f5ebc8] uppercase tracking-[0.25em] text-[8px] md:text-[10px] font-black shadow-2xl">
+                Entrer
+              </div>
+            </label>
+          </div>
+
+          <!-- Droite : Éléments superposés Verticalement -->
+          <div class="flex flex-col items-end gap-4">
+            <!-- Vertical URL -->
+            <div id="vertical-url" class="text-[10px] uppercase tracking-[0.5em] text-[#F5EBC8] font-black [writing-mode:vertical-rl] rotate-180">
+              www.loreedesign.fr
+            </div>
+
+            <!-- Fake Barcode -->
+            <div id="fake-barcode" class="px-1 py-0.5 flex flex-col items-end bg-white/80 rounded-sm scale-75 md:scale-100 origin-bottom-right">
+              <div class="flex h-6 md:h-8 items-end gap-[1px]">
+                <div class="w-[4px] h-full bg-black"></div>
+                <div class="w-[1px] h-full bg-black"></div>
+                <div class="w-[6px] h-full bg-black"></div>
+                <div class="w-[3px] h-full bg-black"></div>
+                <div class="w-[1px] h-full bg-black"></div>
+                <div class="w-[8px] h-full bg-black"></div>
+                <div class="w-[3px] h-full bg-black"></div>
+                <div class="w-[1px] h-full bg-black"></div>
+                <div class="w-[4px] h-full bg-black"></div>
+                <div class="w-[1px] h-full bg-black"></div>
+                <div class="w-[6px] h-full bg-black"></div>
+                <div class="w-[3px] h-full bg-black"></div>
+                <div class="w-[1px] h-full bg-black"></div>
+                <div class="w-[4px] h-full bg-black"></div>
+                <div class="w-[1px] h-full bg-black"></div>
+                <div class="w-[6px] h-full bg-black"></div>
+                <div class="w-[3px] h-full bg-black"></div>
+              </div>
+              <div class="text-[6px] md:text-[7px] font-mono text-black mt-0.5 tracking-[0.1em] font-bold pr-1">
+                3 141592 653589
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Fragment>
+  
+  <Fragment slot="back">
+    <div class="mb-8">
+      <h2 class="text-3xl font-serif font-bold text-primary mb-2">Qui suis-je ?</h2>
+      <div class="h-1 w-16 bg-primary"></div>
+    </div>
+
+    <div class="flex-grow relative">
+      <div class="prose prose-zinc text-[12px] leading-relaxed text-dark/80 font-poppins italic mb-12">
+        <p class="mb-4 font-poppins">
+          Je travaille avec des petites entreprises, des indépendants, des créateurs qui portent leur projet à bout de bras.
+          Ils ont des idées magnifiques, une énergie sincère… mais souvent trop peu de temps pour façonner une image qui leur ressemble vraiment.
+        </p>
+        <p class="mb-4 font-poppins">
+          Alors j’entre en scène.
+          Pas pour prendre la place, mais pour offrir un espace.
+          Un espace où l’on respire, où l’on trie, où l’on comprend ce que le projet veut dire, vraiment.
+        </p>
+        <p class="mb-4 font-poppins">
+          Mon expertise, c’est de traduire l’humain.
+          De transformer une sensibilité, une intention, une histoire en mots, en images, en structures qui touchent juste.
+          Je ne crée pas seulement des identités visuelles ou des pages web :
+          je révèle ce qui était déjà là, mais qui n’avait pas encore trouvé sa forme.
+        </p>
+        <p class="mt-6 mb-4 font-poppins border-t border-[#79B6D8]/30 pt-6">
+          L’Orée, c’est ce passage.
+        </p>
+        <p class="mb-4 font-poppins">
+          Un lieu où l’on dépose ce qui encombre.
+          Où l’on éclaire ce qui compte.
+          Où l’on remet de la douceur dans le processus, de la clarté dans les idées, de la présence dans chaque detail.
+        </p>
+        <p class="mb-4 font-poppins">
+          Mon travail est technique, oui : branding, structure, écriture, direction artistique.
+          Mais il est surtout humain.
+          Parce que derrière chaque projet, il y a une personne qui mérite d’être vue, entendue, comprise.
+        </p>
+      </div>
+    </div>
+  </Fragment>
+</Page>

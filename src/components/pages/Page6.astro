@@ -1,0 +1,130 @@
+---
+import Page from '../Page.astro';
+
+
+interface Props {
+  totalPages: number;
+}
+const { totalPages } = Astro.props;
+---
+
+<Page pageNumber={6} totalPages={totalPages}>
+  <Fragment slot="front">
+    <div class="h-full relative flex flex-col pt-8">
+      <div class="absolute top-0 right-0 w-full flex justify-center">
+
+      </div>
+
+      <div class="mb-6 md:mb-8 min-h-[60px] pt-4 md:pt-12">
+        <h2 class="text-2xl md:text-3xl font-serif font-bold text-primary mb-1">Sérénité Plus</h2>
+        <p class="text-xs md:text-sm font-poppins italic text-dark/60 mb-2 md:mb-3 leading-relaxed">L’accompagnement continu pour un site vivant.</p>
+        <div class="h-1 w-12 bg-primary/40"></div>
+      </div>
+
+      <div class="p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] border border-zinc-100 bg-highlight/30 relative overflow-hidden flex-1 flex flex-col shadow-sm">
+        <div class="mb-6 md:mb-8">
+          <div class="text-2xl md:text-3xl font-serif font-bold text-dark mb-1">150 €</div>
+        </div>
+
+        <ul class="space-y-2 md:space-y-3 mb-8 md:mb-10 flex-grow text-[12px] md:text-[14px]">
+          <li class="flex items-start gap-3 md:gap-4 text-dark/80 font-sans leading-relaxed">
+            <div class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-secondary bg-white/80 shrink-0 mt-0.5 shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" md:width="14" md:height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <span>Hébergement managé premium</span>
+          </li>
+          <li class="flex items-start gap-3 md:gap-4 text-dark/80 font-sans leading-relaxed">
+            <div class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-secondary bg-white/80 shrink-0 mt-0.5 shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" md:width="14" md:height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <span>Sauvegardes quotidiennes</span>
+          </li>
+          <li class="flex items-start gap-3 md:gap-4 text-dark/80 font-sans leading-relaxed">
+            <div class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-secondary bg-white/80 shrink-0 mt-0.5 shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" md:width="14" md:height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <span>Mises à jour & sécurité</span>
+          </li>
+          <li class="flex items-start gap-3 md:gap-4 text-dark/80 font-sans leading-relaxed">
+            <div class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-secondary bg-white/80 shrink-0 mt-0.5 shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" md:width="14" md:height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <span>30 min de retouches mensuelles</span>
+          </li>
+          <li class="flex items-start gap-3 md:gap-4 text-dark/80 font-sans leading-relaxed">
+            <div class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-secondary bg-white/80 shrink-0 mt-0.5 shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" md:width="14" md:height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <span>Rapport de performance</span>
+          </li>
+        </ul>
+
+        <button class="w-full py-3 md:py-5 rounded-2xl font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all font-sans bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10 transform hover:-translate-y-0.5">
+          Me contacter
+        </button>
+      </div>
+    </div>
+  </Fragment>
+  
+  <Fragment slot="back">
+    <div class="h-full flex flex-col justify-center px-2 md:px-6">
+      <div class="flex-grow flex flex-col">
+        <div class="mb-6 mt-4">
+          <h2 class="text-3xl font-serif font-bold text-primary mb-2">Me Contacter</h2>
+          <div class="h-1 w-16 bg-primary"></div>
+        </div>
+
+        <div class="space-y-4 md:space-y-6 max-w-md w-full mb-4 md:mb-6">
+          <div class="flex items-center gap-4 md:gap-6 group">
+            <div class="w-10 h-10 md:w-14 md:h-14 bg-primary/10 rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform border border-primary/20 shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" md:width="28" md:height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="flex-grow">
+              <a 
+                href="mailto:aurelie.magontier@loreedesign.com" 
+                class="inline-flex items-center justify-center w-full py-3 md:py-4 bg-primary text-white rounded-xl md:rounded-2xl font-bold uppercase tracking-widest text-[9px] md:text-[10px] hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 font-sans transform hover:-translate-y-1 block text-center"
+              >
+                Me contacter par email
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 md:gap-6 group">
+            <div class="w-10 h-10 md:w-14 md:h-14 bg-primary/10 rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform border border-primary/20 shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" md:width="28" md:height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share-2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.41" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <div class="flex-grow">
+              <p class="text-[8px] md:text-[10px] font-sans text-primary/60 uppercase tracking-widest mb-0.5 md:mb-1">Instagram</p>
+              <p class="text-[11px] md:text-sm font-serif text-dark font-bold tracking-tight leading-tight">C'est par ici : <span class="text-primary break-all">@loree_by_aurelie</span></p>
+            </div>
+          </div>
+        </div>
+
+        <form 
+          action="mailto:aurelie.magontier@loreedesign.com" 
+          method="POST" 
+          enctype="text/plain"
+          class="space-y-3 md:space-y-4 bg-highlight/20 p-4 md:p-6 rounded-[2rem] md:rounded-[2.5rem] border border-highlight/30 w-full flex-grow mb-4 md:mb-6 relative"
+        >
+          <div class="space-y-2 md:space-y-3">
+            <div class="space-y-1 font-sans">
+              <label class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-dark/60 ml-2">Votre nom</label>
+              <input type="text" name="nom" required class="w-full px-3 md:px-4 py-2 md:py-3 bg-white border border-zinc-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm font-sans text-[10px] md:text-xs" placeholder="Nom Complet" />
+            </div>
+            <div class="space-y-1 font-sans">
+              <label class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-dark/60 ml-2">Votre email</label>
+              <input type="email" name="email" required class="w-full px-3 md:px-4 py-2 md:py-3 bg-white border border-zinc-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm font-sans text-[10px] md:text-xs" placeholder="Email" />
+            </div>
+            <div class="space-y-1 font-sans">
+              <label class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-dark/60 ml-2">Votre message</label>
+              <textarea name="message" required class="w-full px-3 md:px-4 py-2 md:py-3 bg-white border border-zinc-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm h-16 md:h-24 resize-none font-sans text-[10px] md:text-xs" placeholder="Comment puis-je vous aider ?"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="w-full py-3 md:py-4 bg-primary text-white rounded-xl md:rounded-2xl font-bold uppercase tracking-widest text-[9px] md:text-[10px] hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 font-sans transform hover:-translate-y-1 mt-2 md:mt-4">
+            Envoyer le message
+          </button>
+        </form>
+      </div>
+    </div>
+  </Fragment>
+</Page>

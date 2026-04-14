@@ -1,0 +1,153 @@
+/* Global reset & typography */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Mulish:wght@300;400;600;900&family=Poppins:ital,wght@0,300;1,300&display=swap');
+@import "tailwindcss";
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  overflow: hidden;
+  width: 100%;
+}
+
+@theme {
+  /* User-defined colors and fonts for Tailwind classes */
+  --font-serif: "Bodoni Moda", serif;
+  --font-sans: "Mulish", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --color-primary: #79B6D8;
+  --color-secondary: #C7E4CA;
+  --color-dark: #1a1a1a;
+  --color-light: #F0EFEB;
+  --color-highlight: #f5ebc8;
+  --color-accent: #A793AC;
+}
+
+:root {
+
+  /* Book Structural Variables (REQUIRED) */
+  --book-width: 80vw;
+  --book-height: 80vh;
+  --page-width: calc(var(--book-width) / 2);
+  --bg-color: #f7f3eb;
+  --text-color: #2c2c2c;
+  --page-bg: #fff;
+  --page-border: #dcdcdc;
+  --page-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Book Container */
+.book-container {
+  width: var(--book-width);
+  height: var(--book-height);
+  position: relative;
+  perspective: 1500px;
+  /* Centering */
+  margin: 1.5rem auto;
+}
+
+@media (min-width: 768px) {
+  .book-container {}
+}
+
+/* Base structural styles for pages and inputs */
+/* The inputs are visually hidden but still accessible */
+.page-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Fallback Mobile View (Stacking / Scroll Snap) */
+@media (max-width: 768px) {
+  :root {
+    --book-width: 100%;
+    --book-height: 100vh;
+    --page-width: 100%;
+  }
+
+  body {
+    display: block;
+    overflow-x: hidden;
+  }
+
+  .book-container {
+    width: 100%;
+    height: calc(100vh - 4rem);
+    /* Allow space for navigation or padding */
+    perspective: none;
+    margin: 0;
+    padding-top: 1rem;
+
+    /* Scroll snap for mobile */
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* In mobile, pages are side-by-side sliding horizontally */
+  .page-container {
+    position: relative !important;
+    left: 0 !important;
+    flex: 0 0 calc(100% - 2rem);
+    margin: 0 1rem;
+    height: calc(100vh - 6rem) !important;
+    scroll-snap-align: center;
+    transform: none !important;
+    transition: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .page-container .side {
+    position: relative !important;
+    backface-visibility: visible !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100%;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .page-checkbox:checked+.page-container {
+    transform: none !important;
+    z-index: auto !important;
+  }
+
+  /* Interactive labels should be visible but optimized for mobile */
+  .turn-btn {
+    padding: 0.8rem 1.2rem !important;
+    font-size: 0.9rem !important;
+  }
+}
