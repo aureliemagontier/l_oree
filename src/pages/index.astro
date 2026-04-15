@@ -1,5 +1,6 @@
 ---
 import Book from '../components/Book.astro';
+import MobileMenu from '../components/MobileMenu.astro';
 
 // Importation de vos composants de pages
 import Page1 from '../components/pages/Page1.astro';
@@ -24,6 +25,7 @@ const TOTAL_PAGES = 8;
     <title>L'Orée Design - Le livre 3D Zéro JS</title>
   </head>
   <body>
+    <MobileMenu />
     <main>
       <Book>
         <Page1 totalPages={TOTAL_PAGES} tabLabel="Qui suis-je" />

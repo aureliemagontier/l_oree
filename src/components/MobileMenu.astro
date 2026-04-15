@@ -1,0 +1,167 @@
+---
+const menuItems = [
+  { id: 'radio-page-1', label: 'Qui suis-je' },
+  { id: 'radio-page-2', label: 'Ce que je crée' },
+  { id: 'radio-page-3', label: 'Création de site web' },
+  { id: 'radio-page-4', label: 'Mes Packs' },
+  { id: 'radio-page-5', label: 'Mes Packs suite' },
+  { id: 'radio-page-6', label: 'Me contacter' },
+  { id: 'radio-page-7', label: 'Me suivre' }
+];
+---
+
+<div class="mobile-menu-container md:hidden">
+  <button id="burger-btn" class="burger-btn" aria-label="Ouvrir le menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+  </button>
+
+  <nav id="mobile-nav" class="mobile-nav hidden">
+    <div class="mobile-nav-content">
+      <button id="close-btn" class="close-btn" aria-label="Fermer le menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+      <ul class="nav-list">
+        {menuItems.map(item => (
+          <li>
+            <label for={item.id} class="mobile-nav-item">
+              {item.label}
+            </label>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<style>
+  .mobile-menu-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 50; /* Ensure it stays above everything */
+  }
+
+  .burger-btn {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e4e4e7;
+    border-radius: 9999px;
+    padding: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    color: #3f3f46;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+  }
+
+  .burger-btn:active {
+    transform: scale(0.95);
+  }
+
+  .mobile-nav {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 101;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .mobile-nav.hidden {
+    display: none;
+  }
+
+  .mobile-nav-content {
+    background: #fdfaf6; /* Match the aesthetic of the site (warm white default) */
+    width: 75%;
+    max-width: 320px;
+    height: 100%;
+    padding: 4rem 1.5rem 2rem;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #3f3f46;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+  }
+
+  .close-btn:active {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-list li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-nav-item {
+    display: block;
+    padding: 1rem 0;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; /* Match serif font */
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #18181b;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .mobile-nav-item:active {
+    color: #79B6D8;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const burgerBtn = document.getElementById('burger-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const navItems = document.querySelectorAll('.mobile-nav-item');
+
+    burgerBtn?.addEventListener('click', () => {
+      mobileNav?.classList.remove('hidden');
+    });
+
+    closeBtn?.addEventListener('click', () => {
+      mobileNav?.classList.add('hidden');
+    });
+
+    // Close menu when a link is clicked
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        mobileNav?.classList.add('hidden');
+      });
+    });
+  });
+</script>
