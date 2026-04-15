@@ -3,11 +3,12 @@ import Page from '../Page.astro';
 
 interface Props {
   totalPages: number;
+  tabLabel?: string;
 }
-const { totalPages } = Astro.props;
+const { totalPages, tabLabel } = Astro.props;
 ---
 
-<Page pageNumber={2} totalPages={totalPages}> 
+<Page pageNumber={2} totalPages={totalPages} tabLabel={tabLabel}> 
   <Fragment slot="front">
     <div class="flex-grow relative pt-8">
       <div class="prose prose-zinc text-[10px] md:text-[12px] leading-relaxed text-dark/80 font-poppins italic mb-8 md:mb-12">
@@ -39,7 +40,7 @@ const { totalPages } = Astro.props;
     </div>
   </Fragment>
   <Fragment slot="back">
-    <div class="mb-8">
+    <div class="mb-8 back-divider-right">
       <h2 class="text-3xl font-serif font-bold text-primary mb-1">Ce que je crée</h2>
       <div class="h-1 w-16 bg-primary"></div>
     </div>

@@ -164,12 +164,6 @@ body {
     display: none !important;
   }
 
-  /* Afficher le sommaire sur mobile */
-  .sommaire-btn {
-    display: flex !important;
-    pointer-events: auto !important;
-  }
-
   /* Force minimum 12px sur mobile pour tous les petits textes */
   .text-\[10px\],
   .text-\[9px\],

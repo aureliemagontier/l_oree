@@ -3,11 +3,12 @@ import Page from '../Page.astro';
 
 interface Props {
   totalPages: number;
+  tabLabel?: string;
 }
-const { totalPages } = Astro.props;
+const { totalPages, tabLabel } = Astro.props;
 ---
 
-<Page pageNumber={3} totalPages={totalPages}>
+<Page pageNumber={3} totalPages={totalPages} tabLabel={tabLabel}>
   <Fragment slot="front">
     <div class="flex flex-col flex-grow justify-center">
       <div class="relative mb-12">
@@ -46,7 +47,7 @@ const { totalPages } = Astro.props;
     </div>
   </Fragment>
   <Fragment slot="back">
-    <div class="mb-8">
+    <div class="mb-8 back-divider-left">
       <h2 class="text-3xl font-serif font-bold text-primary mb-1">Création de site web</h2>
       <p class="text-sm font-poppins italic text-dark/60 leading-relaxed">
         Un site doux, clair et aligné, pensé pour révéler ton univers.

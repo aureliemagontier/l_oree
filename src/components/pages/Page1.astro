@@ -4,11 +4,12 @@ import Page from '../Page.astro';
 
 interface Props {
   totalPages: number;
+  tabLabel?: string;
 }
-const { totalPages } = Astro.props;
+const { totalPages, tabLabel } = Astro.props;
 ---
 
-<Page pageNumber={1} totalPages={totalPages}>
+<Page pageNumber={1} totalPages={totalPages} tabLabel={tabLabel}>
   <!-- Ajout du slot bg-front exclusif pour un arrière-plan pleine page sans être affecté par le padding de .content -->
   <Fragment slot="bg-front">
     <div class="absolute inset-0 w-full h-full bg-dark z-0 pointer-events-none overflow-hidden rounded-r-lg">
@@ -121,7 +122,7 @@ const { totalPages } = Astro.props;
   </Fragment>
   
   <Fragment slot="back">
-    <div class="mb-8">
+    <div class="mb-8 back-divider-left">
       <h2 class="text-3xl font-serif font-bold text-primary mb-2">Qui suis-je ?</h2>
       <div class="h-1 w-16 bg-primary"></div>
     </div>

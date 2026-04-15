@@ -3,11 +3,12 @@ import Page from '../Page.astro';
 
 interface Props {
   totalPages: number;
+  tabLabel?: string;
 }
-const { totalPages } = Astro.props;
+const { totalPages, tabLabel } = Astro.props;
 ---
 
-<Page pageNumber={4} totalPages={totalPages}>
+<Page pageNumber={4} totalPages={totalPages} tabLabel={tabLabel}>
   <Fragment slot="front">
     <div class="flex-grow flex flex-col space-y-8 pt-0">
       <div class="p-5 md:p-8 rounded-2xl md:rounded-[2.5rem] bg-accent/10 border border-accent/20 relative overflow-hidden w-full">
@@ -72,7 +73,7 @@ const { totalPages } = Astro.props;
   </Fragment>
   <Fragment slot="back">
     <div class="h-full flex flex-col">
-      <div class="mb-8 min-h-[60px]">
+      <div class="mb-8 min-h-[60px] back-divider-right">
         <h2 class="text-3xl font-serif font-bold text-primary mb-1">L’Éclat Express</h2>
         <p class="text-sm font-poppins italic text-dark/60 mb-3 leading-relaxed">La mini‑identité visuelle claire, rapide et lumineuse.</p>
         <div class="h-1 w-12 bg-primary/40"></div>

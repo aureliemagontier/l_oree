@@ -3,11 +3,12 @@ import Page from '../Page.astro';
 
 interface Props {
   totalPages: number;
+  tabLabel?: string;
 }
-const { totalPages } = Astro.props;
+const { totalPages, tabLabel } = Astro.props;
 ---
 
-<Page pageNumber={7} totalPages={totalPages}>
+<Page pageNumber={7} totalPages={totalPages} tabLabel={tabLabel}>
   <Fragment slot="front">
     <div class="h-full flex flex-col justify-center items-center">
       <!-- Empty page before the back cover -->
