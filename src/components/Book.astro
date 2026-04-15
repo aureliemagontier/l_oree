@@ -4,8 +4,8 @@ import '../styles/book.css';
 interface Props {
   totalPages?: number;
 }
-// Default to 7 if not provided
-const totalPages = Astro.props.totalPages || 7;
+// Default to 14 for mobile faces
+const totalPages = Astro.props.totalPages || 14;
 
 // Generate states from 0 to totalPages
 // State k means k physical pages are flipped to the left.
@@ -56,6 +56,50 @@ for (let state = 0; state <= totalPages; state++) {
   <!-- CSS dynamique injecté statiquement au build -->
   <style set:html={`@media (min-width: 769px) { ${dynamicCSS} }`}></style>
 
+  <!-- Script pour navigation mobile -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bookContainer = document.querySelector('.book-container');
+      if (!bookContainer) return;
+
+      // Écouter les changements de radio
+      const radios = document.querySelectorAll('input[name="book-state"]');
+      radios.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+          if (window.innerWidth <= 768) {
+            // Sur mobile, scroller vers la position correspondante
+            const scrollPosition = index * window.innerWidth;
+            bookContainer.scrollTo({
+              left: scrollPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Helper responsive pour la page contact
+      window.goToContact = () => {
+        const target = window.innerWidth <= 768 ? 'radio-page-11' : 'radio-page-6';
+        const radio = document.getElementById(target);
+        if (radio) radio.checked = true;
+      };
+
+      // Synchroniser le scroll avec les radios (optionnel, pour swipe)
+      let isScrolling = false;
+      bookContainer.addEventListener('scroll', () => {
+        if (isScrolling) return;
+        const scrollLeft = bookContainer.scrollLeft;
+        const pageIndex = Math.round(scrollLeft / window.innerWidth);
+        const radio = document.getElementById(`radio-page-${pageIndex}`);
+        if (radio && !radio.checked) {
+          isScrolling = true;
+          radio.checked = true;
+          setTimeout(() => isScrolling = false, 300);
+        }
+      });
+    });
+  </script>
+
   <!-- Modal Sommaire (Caché par défaut, affiché quand sommer-toggle est coché) -->
   <div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md hidden peer-checked/sommaire:flex flex-col items-center justify-center p-4">
     <div class="bg-[#f8f7f5] text-dark w-full max-w-sm rounded-[2rem] shadow-2xl p-8 relative flex flex-col items-center border border-primary/20">
@@ -64,46 +108,81 @@ for (let state = 0; state <= totalPages; state++) {
       </h2>
       
       <div class="flex flex-col gap-4 w-full px-4 mb-8 max-h-[60vh] overflow-y-auto custom-scrollbar">
-        <!-- Mapping des pages logiques vers les états physiques (Radios) -->
+        <!-- Mapping des faces pour mobile -->
         
         <label for="radio-page-0" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
-          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Couverture</span>
-          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 1</span>
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Couverture Front</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">1</span>
         </label>
         
         <label for="radio-page-1" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
-          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Présentation</span>
-          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 2</span>
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Couverture Back</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">2</span>
         </label>
         
         <label for="radio-page-2" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
-          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Philosophie</span>
-          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 3</span>
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Présentation Front</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">3</span>
         </label>
-
+        
         <label for="radio-page-3" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
-          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Processus</span>
-          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 4</span>
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Présentation Back</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">4</span>
         </label>
 
         <label for="radio-page-4" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
-          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Offre Éclat Express</span>
-          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 5</span>
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Philosophie Front</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">5</span>
         </label>
 
         <label for="radio-page-5" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
-          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">La Voix Juste</span>
-          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 6</span>
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Philosophie Back</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">6</span>
         </label>
 
         <label for="radio-page-6" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
-          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Sérénité Plus</span>
-          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Page 7</span>
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Processus Front</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">7</span>
         </label>
-        
+
         <label for="radio-page-7" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
-          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Dos Couverture</span>
-          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">Fin</span>
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Processus Back</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">8</span>
+        </label>
+
+        <label for="radio-page-8" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Offre Éclat Express Front</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">9</span>
+        </label>
+
+        <label for="radio-page-9" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Offre Éclat Express Back</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">10</span>
+        </label>
+
+        <label for="radio-page-10" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">La Voix Juste Front</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">11</span>
+        </label>
+
+        <label for="radio-page-11" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">La Voix Juste Back</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">12</span>
+        </label>
+
+        <label for="radio-page-12" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Sérénité Plus Front</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">13</span>
+        </label>
+
+        <label for="radio-page-13" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Sérénité Plus Back</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">14</span>
+        </label>
+
+        <label for="radio-page-14" class="cursor-pointer group flex items-center justify-between border-b border-zinc-200 pb-2 hover:border-primary transition-colors">
+          <span class="font-sans text-sm tracking-widest uppercase font-bold text-dark/80 group-hover:text-primary transition-colors">Dos Couverture Front</span>
+          <span class="font-serif italic text-dark/50 group-hover:text-primary pl-4">15</span>
         </label>
       </div>
 

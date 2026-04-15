@@ -17,6 +17,7 @@
 
 main {
   overflow: hidden;
+  padding: 0 !important;
   width: 100%;
 }
 
@@ -25,7 +26,7 @@ main {
   --font-serif: "Bodoni Moda", serif;
   --font-sans: "Mulish", sans-serif;
   --font-poppins: "Poppins", sans-serif;
-  --color-primary: #79B6D8;
+  --color-primary: #2c3e50;
   --color-secondary: #C7E4CA;
   --color-dark: #1a1a1a;
   --color-light: #F0EFEB;
@@ -44,6 +45,12 @@ main {
   --page-bg: #fff;
   --page-border: #dcdcdc;
   --page-shadow: rgba(0, 0, 0, 0.1);
+   --color-primary: #2c3e50;
+  --color-secondary: #C7E4CA;
+  --color-dark: #1a1a1a;
+  --color-light: #F0EFEB;
+  --color-highlight: #f5ebc8;
+  --color-accent: #A793AC;
 }
 
 body {
@@ -68,9 +75,6 @@ body {
   margin: 1.5rem auto;
 }
 
-@media (min-width: 768px) {
-  .book-container {}
-}
 
 /* Base structural styles for pages and inputs */
 /* The inputs are visually hidden but still accessible */
@@ -86,23 +90,28 @@ body {
 @media (max-width: 768px) {
   :root {
     --book-width: 100%;
-    --book-height: 100vh;
+    --book-height: 95vh;
     --page-width: 100%;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
   }
 
   body {
     display: block;
-    overflow-x: hidden;
   }
 
   .book-container {
-    width: 100%;
+    width: %;
+    max-width: 100vw;
     min-height: calc(100vh - 4rem);
     height: auto;
+    box-sizing: border-box;
     /* Allow space for navigation or padding */
     perspective: none;
     margin: 0;
-    padding-top: 1rem;
 
     /* Scroll snap for mobile */
     display: flex;
@@ -111,34 +120,38 @@ body {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    background-color: #fff;
   }
 
   /* In mobile, pages are side-by-side sliding horizontally */
   .page-container {
     position: relative !important;
     left: 0 !important;
-    flex: 0 0 calc(100% - 2rem);
-    margin: 0 1rem;
+    flex: 0 0 200vw;
+    max-width: 200vw;
+    margin: 0;
     height: auto !important;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
     transform: none !important;
     transition: none !important;
     display: flex !important;
-    flex-direction: column !important;
+    flex-direction: row !important;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
-    overflow: visible;
+    overflow: hidden !important;
   }
 
   .page-container .side {
     position: relative !important;
     backface-visibility: visible !important;
     transform: none !important;
-    width: 100% !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
     height: auto !important;
     min-height: auto !important;
     border: none !important;
     box-shadow: none !important;
+    overflow-x: hidden !important;
   }
 
   .page-checkbox:checked+.page-container {
@@ -148,15 +161,23 @@ body {
 
   /* Masquer les contrôles de navigation sur mobile */
   .turn-btn,
-  .sommaire-btn,
   .nav-front,
   .nav-back {
     display: none !important;
   }
 
-  /* Interactive labels should be visible but optimized for mobile */
-  .turn-btn {
-    padding: 0.8rem 1.2rem !important;
-    font-size: 0.9rem !important;
+  /* Afficher le sommaire sur mobile */
+  .sommaire-btn {
+    display: flex !important;
+    pointer-events: auto !important;
+  }
+
+  /* Force minimum 12px sur mobile pour tous les petits textes */
+  .text-\[10px\],
+  .text-\[9px\],
+  .text-\[8px\],
+  .text-xs {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
   }
 }

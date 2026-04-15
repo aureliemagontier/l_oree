@@ -9,7 +9,7 @@ const { totalPages } = Astro.props;
 
 <Page pageNumber={4} totalPages={totalPages}>
   <Fragment slot="front">
-    <div class="flex-grow flex flex-col justify-center space-y-8">
+    <div class="flex-grow flex flex-col space-y-8 pt-0">
       <div class="p-5 md:p-8 rounded-2xl md:rounded-[2.5rem] bg-accent/10 border border-accent/20 relative overflow-hidden w-full">
         <h3 class="text-lg md:text-xl font-serif font-bold text-dark mb-4 md:mb-6">Le processus</h3>
         <ol class="space-y-2 md:space-y-3 text-[11px] md:text-[13px] font-sans text-dark/80">
@@ -64,7 +64,7 @@ const { totalPages } = Astro.props;
         <p class="text-base font-poppins italic text-dark/60 mb-6">
           Prête à donner vie à ton univers en ligne ?
         </p>
-        <button class="px-8 py-3 md:px-12 md:py-4 rounded-full bg-primary text-white font-sans font-bold text-xs md:text-sm uppercase tracking-widest hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 transform hover:-translate-y-1">
+        <button type="button" onclick="window.goToContact()" class="px-8 py-3 md:px-12 md:py-4 rounded-full bg-primary text-white font-sans font-bold text-xs md:text-sm uppercase tracking-widest hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 transform hover:-translate-y-1 cursor-pointer inline-block">
           Créer mon site
         </button>
       </div>
@@ -116,7 +116,7 @@ const { totalPages } = Astro.props;
           </li>
         </ul>
 
-        <button class="w-full py-3 md:py-5 rounded-2xl font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all font-sans bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10 transform hover:-translate-y-0.5">
+        <button type="button" onclick="window.goToContact()" class="px-8 py-3 md:px-12 md:py-4 rounded-full bg-primary text-white font-sans font-bold text-xs md:text-sm uppercase tracking-widest hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 transform hover:-translate-y-1 cursor-pointer block text-center">
           Je veux mon Éclat Express
         </button>
       </div>

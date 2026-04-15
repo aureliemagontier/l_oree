@@ -10,12 +10,12 @@ const { totalPages } = Astro.props;
 
 <Page pageNumber={6} totalPages={totalPages}>
   <Fragment slot="front">
-    <div class="h-full relative flex flex-col pt-8">
+    <div class="h-full relative flex flex-col pt-0">
       <div class="absolute top-0 right-0 w-full flex justify-center">
 
       </div>
 
-      <div class="mb-6 md:mb-8 min-h-[60px] pt-4 md:pt-12">
+      <div class="mb-6 md:mb-8 min-h-[60px] ">
         <h2 class="text-2xl md:text-3xl font-serif font-bold text-primary mb-1">Sérénité Plus</h2>
         <p class="text-xs md:text-sm font-poppins italic text-dark/60 mb-2 md:mb-3 leading-relaxed">L’accompagnement continu pour un site vivant.</p>
         <div class="h-1 w-12 bg-primary/40"></div>
@@ -59,7 +59,7 @@ const { totalPages } = Astro.props;
           </li>
         </ul>
 
-        <button class="w-full py-3 md:py-5 rounded-2xl font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all font-sans bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10 transform hover:-translate-y-0.5">
+        <button type="button" onclick="window.goToContact()" class="w-full py-3 md:py-5 rounded-2xl font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all font-sans bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10 transform hover:-translate-y-0.5 cursor-pointer block text-center">
           Me contacter
         </button>
       </div>
@@ -76,9 +76,9 @@ const { totalPages } = Astro.props;
 
         <div class="space-y-4 md:space-y-6 max-w-md w-full mb-4 md:mb-6">
           <div class="flex items-center gap-4 md:gap-6 group">
-            <div class="w-10 h-10 md:w-14 md:h-14 bg-primary/10 rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform border border-primary/20 shrink-0">
+            <!-- <div class="w-10 h-10 md:w-14 md:h-14 bg-primary/10 rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform border border-primary/20 shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" md:width="28" md:height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            </div>
+            </div>-->
             <div class="flex-grow">
               <a 
                 href="mailto:aurelie.magontier@loreedesign.com" 
