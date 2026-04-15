@@ -172,7 +172,6 @@ body {
     flex-direction: row !important;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
-    overflow: hidden !important;
   }
 
   .page-container .side {
@@ -185,7 +184,6 @@ body {
     /* Requis pour que .content prenne le reste */
     border: none !important;
     box-shadow: none !important;
-    overflow-x: hidden !important;
   }
 
   .page-checkbox:checked+.page-container {
