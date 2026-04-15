@@ -86,7 +86,7 @@ body {
   pointer-events: none;
 }
 
-/* Fallback Mobile View (Stacking / Scroll Snap) */
+/* Fallback Mobile View (Stacking / Scroll Snap)*/
 @media (max-width: 768px) {
   :root {
     --book-width: 100%;
@@ -109,11 +109,11 @@ body {
     min-height: calc(100vh - 4rem);
     height: auto;
     box-sizing: border-box;
-    /* Allow space for navigation or padding */
+  
     perspective: none;
     margin: 0;
 
-    /* Scroll snap for mobile */
+
     display: flex;
     overflow-x: auto;
     overflow-y: visible;
@@ -123,7 +123,6 @@ body {
     background-color: #fff;
   }
 
-  /* In mobile, pages are side-by-side sliding horizontally */
   .page-container {
     position: relative !important;
     left: 0 !important;
@@ -157,14 +156,13 @@ body {
     z-index: auto !important;
   }
 
-  /* Masquer les contrôles de navigation sur mobile */
   .turn-btn,
   .nav-front,
   .nav-back {
     display: none !important;
   }
 
-  /* Force minimum 12px sur mobile pour tous les petits textes */
+
   .text-\[10px\],
   .text-\[9px\],
   .text-\[8px\],
@@ -172,4 +170,4 @@ body {
     font-size: 12px !important;
     line-height: 1.4 !important;
   }
-}
+} 

@@ -143,10 +143,19 @@ const backwardRadioId = `radio-page-${pageNumber - 1}`;
   }
 
   .nav-tab-back {
-    left: -5.5rem;
-    right: auto;
-    transform: rotateY(180deg);
+    left: calc(100% - 10em);
   }
+
+   @media (max-width: 768px) {
+      .page-tab-back {
+        display: none;
+      }
+      .page-tab-front{
+       display: none;
+      }
+    
+  }
+
 
   @media (min-width: 768px) {
     .content {
@@ -154,22 +163,6 @@ const backwardRadioId = `radio-page-${pageNumber - 1}`;
     }
   }
 
-  /* Interaction Buttons (Labels hooked to checkboxes) */
-  .turn-btn {
-    pointer-events: auto; /* Permet de cliquer malgré le nav-wrapper none */
-    cursor: pointer;
-    text-align: center;
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-    font-style: italic;
-    color: #666;
-    transition: color 0.3s, background-color 0.3s;
-    user-select: none;
-    display: inline-block;
-    border-radius: 8px;
-    background-color: rgba(248, 247, 245, 0.4);
-    backdrop-filter: blur(2px);
-  }
 
   @media (min-width: 768px) {
     .turn-btn {
