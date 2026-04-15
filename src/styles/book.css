@@ -128,6 +128,8 @@ body {
   html,
   body {
     overflow-x: hidden;
+    overflow-y: hidden; /* Empêche le léger scroll global */
+    height: 100%;
   }
 
   body {
@@ -137,8 +139,8 @@ body {
   .book-container {
     width: 100%;
     max-width: 100vw;
-    min-height: calc(90vh - 4rem);
-    height: auto;
+    height: 100dvh; /* Force la hauteur exacte de l'écran (gère la barre Safari) */
+    min-height: 100vh;
     box-sizing: border-box;
 
     perspective: none;
@@ -160,7 +162,7 @@ body {
     flex: 0 0 200vw;
     max-width: 200vw;
     margin: 0;
-    height: auto !important;
+    height: 100% !important; /* Force le conteneur à ne pas dépasser pour laisser .content scroller */
     scroll-snap-align: start;
     transform: none !important;
     transition: none !important;
@@ -177,6 +179,7 @@ body {
     transform: none !important;
     width: 100vw !important;
     max-width: 100vw !important;
+    height: 100% !important; /* Requis pour que .content prenne le reste */
     border: none !important;
     box-shadow: none !important;
     overflow-x: hidden !important;
