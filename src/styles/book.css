@@ -90,7 +90,7 @@ body {
 @media (max-width: 768px) {
   :root {
     --book-width: 100%;
-    --book-height: 95vh;
+    --book-height: 90vh;
     --page-width: 100%;
   }
 
