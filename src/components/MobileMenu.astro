@@ -54,7 +54,7 @@ const menuItems = [
             <li>
               <button
                 class="mobile-nav-item w-full text-left"
-                data-scroll-multiplier={index + 1 + index}
+                data-scroll-multiplier={index}
               >
                 {item.label}
               </button>
@@ -198,25 +198,16 @@ const menuItems = [
     });
 
     // Close menu when a link is clicked and scroll smoothly
-    navItems.forEach((item) => {
-      item.addEventListener("click", (e) => {
+    navItems.forEach((item, index) => {
+      item.addEventListener("click", () => {
         mobileNav?.classList.add("hidden");
 
-        const multiplier = parseInt(
-          (e.currentTarget as HTMLElement).getAttribute(
-            "data-scroll-multiplier",
-          ) || "0",
-          10,
+        // L'utilisateur souhaite cibler la face "back" de chaque page
+        const target = document.querySelector(
+          `#page-container-${index + 1} .side.back`
         );
-        const bookContainer = document.querySelector(".book-container");
-
-        if (bookContainer) {
-          // Exactement le même calcul direct que pour le CTA
-          const scrollPosition = multiplier * window.innerWidth;
-          bookContainer.scrollTo({
-            left: scrollPosition,
-            behavior: "smooth",
-          });
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
         }
       });
     });

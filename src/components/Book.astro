@@ -62,12 +62,10 @@ for (let state = 0; state <= totalPages; state++) {
         // Sur mobile, scroller directement vers la page contact (11ème face)
         const bookContainer = document.querySelector('.book-container');
         if (bookContainer) {
-          // Sur mobile, on scrolle à 10 * innerWidth (1000vw) pour respecter le CSS scroll-snap de la 6ème page (5 * 200vw)
-          const scrollPosition = 10 * window.innerWidth;
-          bookContainer.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-          });
+          const target = document.querySelector('#page-container-6 .side.back');
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
         }
       } else {
         // Sur desktop, changer le radio pour le flip 3D
@@ -86,29 +84,23 @@ for (let state = 0; state <= totalPages; state++) {
         radio.addEventListener('change', () => {
           if (window.innerWidth <= 768) {
             // Sur mobile, scroller vers la position correspondante
-            // On fait (index - 1) car l'index 1 (Qui suis-je) doit pointer vers la première page (0vw)
-            const scrollPosition = Math.max(0, index - 1) * 2 * window.innerWidth;
-            bookContainer.scrollTo({
-              left: scrollPosition,
-              behavior: 'smooth'
-            });
+            const targetIndex = Math.max(1, index);
+            const target = document.getElementById(`page-container-${targetIndex}`);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
           }
         });
       });
 
-      // Synchroniser le scroll avec les radios (optionnel, pour swipe)
+      // Synchroniser le scroll avec les radios (optionnel, pour swipe horizontal sur desktop/tablette)
       let isScrolling = false;
       bookContainer.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768) return; // Désactivé sur mobile car défilement vertical uniquement
         if (isScrolling) return;
         const scrollLeft = bookContainer.scrollLeft;
-        // On divise par (2 * innerWidth) et on ajoute 1 car le conteneur 0vw correspond au radio-page-1
-        const pageIndex = Math.round(scrollLeft / (2 * window.innerWidth)) + 1;
-        const radio = document.getElementById(`radio-page-${pageIndex}`) as HTMLInputElement | null;
-        if (radio && !radio.checked) {
-          isScrolling = true;
-          radio.checked = true;
-          setTimeout(() => isScrolling = false, 300);
-        }
+        
+        // Sur desktop ce bloc ne sert pas à scroller les pages en général (le 3D book le fait), mais s'il reste du swipe on garde la logique.
       });
     });
   </script>
