@@ -58,6 +58,25 @@ for (let state = 0; state <= totalPages; state++) {
 
   <!-- Script pour navigation mobile -->
   <script>
+    // Helper responsive pour la page contact
+    window.goToContact = () => {
+      if (window.innerWidth <= 768) {
+        // Sur mobile, scroller directement vers la page contact (11ème face)
+        const bookContainer = document.querySelector('.book-container');
+        if (bookContainer) {
+          const scrollPosition = 11 * window.innerWidth;
+          bookContainer.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+          });
+        }
+      } else {
+        // Sur desktop, changer le radio pour le flip 3D
+        const radio = document.getElementById('radio-page-6');
+        if (radio) radio.checked = true;
+      }
+    };
+
     document.addEventListener('DOMContentLoaded', () => {
       const bookContainer = document.querySelector('.book-container');
       if (!bookContainer) return;
@@ -76,13 +95,6 @@ for (let state = 0; state <= totalPages; state++) {
           }
         });
       });
-
-      // Helper responsive pour la page contact
-      window.goToContact = () => {
-        const target = window.innerWidth <= 768 ? 'radio-page-11' : 'radio-page-6';
-        const radio = document.getElementById(target);
-        if (radio) radio.checked = true;
-      };
 
       // Synchroniser le scroll avec les radios (optionnel, pour swipe)
       let isScrolling = false;
