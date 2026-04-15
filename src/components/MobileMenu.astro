@@ -1,33 +1,66 @@
 ---
 const menuItems = [
-  { id: 'radio-page-1', label: 'Qui suis-je' },
-  { id: 'radio-page-2', label: 'Ce que je crée' },
-  { id: 'radio-page-3', label: 'Création de site web' },
-  { id: 'radio-page-4', label: 'Mes Packs' },
-  { id: 'radio-page-5', label: 'Mes Packs suite' },
-  { id: 'radio-page-6', label: 'Me contacter' },
-  { id: 'radio-page-7', label: 'Me suivre' }
+  { id: "radio-page-1", label: "Qui suis-je" },
+  { id: "radio-page-2", label: "Ce que je crée" },
+  { id: "radio-page-3", label: "Création de site web" },
+  { id: "radio-page-4", label: "Mes Packs" },
+  { id: "radio-page-5", label: "Mes Packs suite" },
+  { id: "radio-page-6", label: "Me contacter" },
+  { id: "radio-page-7", label: "Me suivre" },
 ];
 ---
 
 <div class="mobile-menu-container md:hidden">
   <button id="burger-btn" class="burger-btn" aria-label="Ouvrir le menu">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-menu"
+      ><line x1="4" x2="20" y1="12" y2="12"></line><line
+        x1="4"
+        x2="20"
+        y1="6"
+        y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg
+    >
   </button>
 
   <nav id="mobile-nav" class="mobile-nav hidden">
     <div class="mobile-nav-content">
       <button id="close-btn" class="close-btn" aria-label="Fermer le menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-x"
+          ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+        >
       </button>
       <ul class="nav-list">
-        {menuItems.map(item => (
-          <li>
-            <label for={item.id} class="mobile-nav-item">
-              {item.label}
-            </label>
-          </li>
-        ))}
+        {
+          menuItems.map((item, index) => (
+            <li>
+              <button
+                class="mobile-nav-item w-full text-left"
+                data-scroll-multiplier={index + 1 + index}
+              >
+                {item.label}
+              </button>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </nav>
@@ -46,7 +79,9 @@ const menuItems = [
     border: 1px solid #e4e4e7;
     border-radius: 9999px;
     padding: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
     cursor: pointer;
     color: #3f3f46;
     display: flex;
@@ -68,7 +103,7 @@ const menuItems = [
     display: flex;
     justify-content: flex-end;
   }
-  
+
   .mobile-nav.hidden {
     display: none;
   }
@@ -79,7 +114,7 @@ const menuItems = [
     max-width: 320px;
     height: 100%;
     padding: 4rem 1.5rem 2rem;
-    box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
     position: relative;
     animation: slideIn 0.3s ease-out;
     display: flex;
@@ -87,8 +122,12 @@ const menuItems = [
   }
 
   @keyframes slideIn {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
 
   .close-btn {
@@ -128,7 +167,8 @@ const menuItems = [
   .mobile-nav-item {
     display: block;
     padding: 1rem 0;
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; /* Match serif font */
+    font-family:
+      ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; /* Match serif font */
     font-size: 1.1rem;
     font-weight: 600;
     color: #18181b;
@@ -138,29 +178,46 @@ const menuItems = [
   }
 
   .mobile-nav-item:active {
-    color: #79B6D8;
+    color: #79b6d8;
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const burgerBtn = document.getElementById('burger-btn');
-    const closeBtn = document.getElementById('close-btn');
-    const mobileNav = document.getElementById('mobile-nav');
-    const navItems = document.querySelectorAll('.mobile-nav-item');
+  document.addEventListener("DOMContentLoaded", () => {
+    const burgerBtn = document.getElementById("burger-btn");
+    const closeBtn = document.getElementById("close-btn");
+    const mobileNav = document.getElementById("mobile-nav");
+    const navItems = document.querySelectorAll(".mobile-nav-item");
 
-    burgerBtn?.addEventListener('click', () => {
-      mobileNav?.classList.remove('hidden');
+    burgerBtn?.addEventListener("click", () => {
+      mobileNav?.classList.remove("hidden");
     });
 
-    closeBtn?.addEventListener('click', () => {
-      mobileNav?.classList.add('hidden');
+    closeBtn?.addEventListener("click", () => {
+      mobileNav?.classList.add("hidden");
     });
 
-    // Close menu when a link is clicked
-    navItems.forEach(item => {
-      item.addEventListener('click', () => {
-        mobileNav?.classList.add('hidden');
+    // Close menu when a link is clicked and scroll smoothly
+    navItems.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        mobileNav?.classList.add("hidden");
+
+        const multiplier = parseInt(
+          (e.currentTarget as HTMLElement).getAttribute(
+            "data-scroll-multiplier",
+          ) || "0",
+          10,
+        );
+        const bookContainer = document.querySelector(".book-container");
+
+        if (bookContainer) {
+          // Exactement le même calcul direct que pour le CTA
+          const scrollPosition = multiplier * window.innerWidth;
+          bookContainer.scrollTo({
+            left: scrollPosition,
+            behavior: "smooth",
+          });
+        }
       });
     });
   });

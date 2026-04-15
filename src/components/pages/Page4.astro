@@ -1,5 +1,5 @@
 ---
-import Page from '../Page.astro';
+import Page from "../Page.astro";
 
 interface Props {
   totalPages: number;
@@ -11,9 +11,17 @@ const { totalPages, tabLabel } = Astro.props;
 <Page pageNumber={4} totalPages={totalPages} tabLabel={tabLabel}>
   <Fragment slot="front">
     <div class="flex-grow flex flex-col space-y-8 pt-0">
-      <div class="p-5 md:p-8 rounded-2xl md:rounded-[2.5rem] bg-accent/10 border border-accent/20 relative overflow-hidden w-full">
-        <h3 class="text-lg md:text-xl font-serif font-bold text-dark mb-4 md:mb-6">Le processus</h3>
-        <ol class="space-y-2 md:space-y-3 text-[11px] md:text-[13px] font-sans text-dark/80">
+      <div
+        class="p-5 md:p-8 rounded-2xl md:rounded-[2.5rem] bg-accent/10 border border-accent/20 relative overflow-hidden w-full"
+      >
+        <h3
+          class="text-lg md:text-xl font-serif font-bold text-dark mb-4 md:mb-6"
+        >
+          Le processus
+        </h3>
+        <ol
+          class="space-y-2 md:space-y-3 text-[11px] md:text-[13px] font-sans text-dark/80"
+        >
           <li class="flex gap-3 md:gap-4">
             <span class="font-bold text-accent">1.</span>
             <span>Appel ou questionnaire pour comprendre ton univers</span>
@@ -43,20 +51,49 @@ const { totalPages, tabLabel } = Astro.props;
 
       <!-- Pour qui ? -->
       <div class="relative px-2 md:px-6">
-        <h3 class="text-lg md:text-xl font-serif font-bold text-dark mb-2 md:mb-3">Pour qui ?</h3>
-        <p class="text-[11px] md:text-[13px] font-sans leading-relaxed text-dark/80 italic">
-          Pour les indépendantes, TPE et PME qui recherchent un site web fiable, esthétique et facile à gérer, conçu pour soutenir leur croissance et renforcer leur présence en ligne.
+        <h3
+          class="text-lg md:text-xl font-serif font-bold text-dark mb-2 md:mb-3"
+        >
+          Pour qui ?
+        </h3>
+        <p
+          class="text-[11px] md:text-[13px] font-sans leading-relaxed text-dark/80 italic"
+        >
+          Pour les indépendantes, TPE et PME qui recherchent un site web fiable,
+          esthétique et facile à gérer, conçu pour soutenir leur croissance et
+          renforcer leur présence en ligne.
         </p>
       </div>
 
       <!-- Tarifs -->
-      <div class="p-5 md:p-8 rounded-2xl md:rounded-[2.5rem] bg-primary/10 border border-primary/20 relative overflow-hidden">
+      <div
+        class="p-5 rounded-2xl md:rounded-[2.5rem] bg-primary/10 border border-primary/20 relative overflow-hidden"
+      >
         <div class="absolute top-6 right-6 text-primary/30 hidden md:block">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-sun"
+            ><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"
+            ></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"
+            ></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"
+            ></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"
+            ></path><path d="m19.07 4.93-1.41 1.41"></path></svg
+          >
         </div>
-        <h3 class="text-lg md:text-xl font-serif font-bold text-dark mb-2">Tarif</h3>
+        <h3 class="text-lg md:text-xl font-serif font-bold text-dark mb-2">
+          Tarif
+        </h3>
         <p class="text-[12px] md:text-[14px] font-sans text-dark/80">
-          Le tarif est défini sur devis, selon la structure du site, le nombre de pages et les fonctionnalités nécessaires à ton activité.
+          Le tarif est défini sur devis, selon la structure du site, le nombre
+          de pages et les fonctionnalités nécessaires à ton activité.
         </p>
       </div>
 
@@ -65,7 +102,11 @@ const { totalPages, tabLabel } = Astro.props;
         <p class="text-base font-poppins italic text-dark/60 mb-6">
           Prête à donner vie à ton univers en ligne ?
         </p>
-        <button type="button" onclick="window.goToContact()" class="px-8 py-3 md:px-12 md:py-4 rounded-full bg-primary text-white font-sans font-bold text-xs md:text-sm uppercase tracking-widest hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 transform hover:-translate-y-1 cursor-pointer inline-block">
+        <button
+          type="button"
+          onclick="window.goToContact()"
+          class="px-8 py-3 md:px-12 md:py-4 rounded-full bg-primary text-white font-sans font-bold text-xs md:text-sm uppercase tracking-widest hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 transform hover:-translate-y-1 cursor-pointer inline-block"
+        >
           Créer mon site
         </button>
       </div>
@@ -74,50 +115,154 @@ const { totalPages, tabLabel } = Astro.props;
   <Fragment slot="back">
     <div class="h-full flex flex-col">
       <div class="mb-8 min-h-[60px] back-divider-right">
-        <h2 class="text-3xl font-serif font-bold text-primary mb-1">L’Éclat Express</h2>
-        <p class="text-sm font-poppins italic text-dark/60 mb-3 leading-relaxed">La mini‑identité visuelle claire, rapide et lumineuse.</p>
+        <h2 class="text-3xl font-serif font-bold text-primary mb-1">
+          L’Éclat Express
+        </h2>
+        <p
+          class="text-sm font-poppins italic text-dark/60 mb-3 leading-relaxed"
+        >
+          La mini‑identité visuelle claire, rapide et lumineuse.
+        </p>
         <div class="h-1 w-12 bg-primary/40"></div>
       </div>
 
-      <div class="p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] border border-zinc-100 bg-highlight/30 relative overflow-hidden flex-1 flex flex-col shadow-sm">
+      <div
+        class="p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] border border-zinc-100 bg-highlight/30 relative overflow-hidden flex-1 flex flex-col shadow-sm"
+      >
         <div class="mb-6 md:mb-8">
-          <div class="text-2xl md:text-3xl font-serif font-bold text-dark mb-1">250 €</div>
+          <div class="text-2xl md:text-3xl font-serif font-bold text-dark mb-1">
+            250 €
+          </div>
         </div>
 
         <ul class="space-y-2 md:space-y-3 mb-8 md:mb-10 flex-grow">
-          <li class="flex items-start gap-3 md:gap-4 text-[12px] md:text-[14px] text-dark/80 font-sans leading-relaxed">
-            <div class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-primary bg-white/80 shrink-0 mt-0.5 shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" md:width="14" md:height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+          <li
+            class="flex items-start gap-3 md:gap-4 text-[12px] md:text-[14px] text-dark/80 font-sans leading-relaxed"
+          >
+            <div
+              class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-primary bg-white/80 shrink-0 mt-0.5 shadow-sm"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                md:width="14"
+                md:height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-check"
+                ><path d="M20 6 9 17l-5-5"></path></svg
+              >
             </div>
             <span>Palette de couleurs intuitive</span>
           </li>
-          <li class="flex items-start gap-3 md:gap-4 text-[12px] md:text-[14px] text-dark/80 font-sans leading-relaxed">
-            <div class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-primary bg-white/80 shrink-0 mt-0.5 shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" md:width="14" md:height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+          <li
+            class="flex items-start gap-3 md:gap-4 text-[12px] md:text-[14px] text-dark/80 font-sans leading-relaxed"
+          >
+            <div
+              class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-primary bg-white/80 shrink-0 mt-0.5 shadow-sm"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                md:width="14"
+                md:height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-check"
+                ><path d="M20 6 9 17l-5-5"></path></svg
+              >
             </div>
             <span>Duo typographique harmonisé</span>
           </li>
-          <li class="flex items-start gap-3 md:gap-4 text-[12px] md:text-[14px] text-dark/80 font-sans leading-relaxed">
-            <div class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-primary bg-white/80 shrink-0 mt-0.5 shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" md:width="14" md:height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+          <li
+            class="flex items-start gap-3 md:gap-4 text-[12px] md:text-[14px] text-dark/80 font-sans leading-relaxed"
+          >
+            <div
+              class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-primary bg-white/80 shrink-0 mt-0.5 shadow-sm"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                md:width="14"
+                md:height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-check"
+                ><path d="M20 6 9 17l-5-5"></path></svg
+              >
             </div>
             <span>Mini‑logo ou monogramme</span>
           </li>
-          <li class="flex items-start gap-3 md:gap-4 text-[12px] md:text-[14px] text-dark/80 font-sans leading-relaxed">
-            <div class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-primary bg-white/80 shrink-0 mt-0.5 shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" md:width="14" md:height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+          <li
+            class="flex items-start gap-3 md:gap-4 text-[12px] md:text-[14px] text-dark/80 font-sans leading-relaxed"
+          >
+            <div
+              class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-primary bg-white/80 shrink-0 mt-0.5 shadow-sm"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                md:width="14"
+                md:height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-check"
+                ><path d="M20 6 9 17l-5-5"></path></svg
+              >
             </div>
             <span>Moodboard directionnel</span>
           </li>
-          <li class="flex items-start gap-3 md:gap-4 text-[12px] md:text-[14px] text-dark/80 font-sans leading-relaxed">
-            <div class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-primary bg-white/80 shrink-0 mt-0.5 shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" md:width="14" md:height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+          <li
+            class="flex items-start gap-3 md:gap-4 text-[12px] md:text-[14px] text-dark/80 font-sans leading-relaxed"
+          >
+            <div
+              class="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-primary bg-white/80 shrink-0 mt-0.5 shadow-sm"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                md:width="14"
+                md:height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-check"
+                ><path d="M20 6 9 17l-5-5"></path></svg
+              >
             </div>
             <span>Mini‑guide PDF (3 pages)</span>
           </li>
         </ul>
 
-        <button type="button" onclick="window.goToContact()" class="px-8 py-3 md:px-12 md:py-4 rounded-full bg-primary text-white font-sans font-bold text-xs md:text-sm uppercase tracking-widest hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 transform hover:-translate-y-1 cursor-pointer block text-center">
+        <button
+          type="button"
+          onclick="window.goToContact()"
+          class="px-8 py-3 md:px-12 md:py-4 rounded-full bg-primary text-white font-sans font-bold text-xs md:text-sm uppercase tracking-widest hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 transform hover:-translate-y-1 cursor-pointer block text-center"
+        >
           Je veux mon Éclat Express
         </button>
       </div>

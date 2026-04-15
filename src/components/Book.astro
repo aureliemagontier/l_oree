@@ -62,7 +62,8 @@ for (let state = 0; state <= totalPages; state++) {
         // Sur mobile, scroller directement vers la page contact (11ème face)
         const bookContainer = document.querySelector('.book-container');
         if (bookContainer) {
-          const scrollPosition = 11 * window.innerWidth;
+          // Sur mobile, on scrolle à 10 * innerWidth (1000vw) pour respecter le CSS scroll-snap de la 6ème page (5 * 200vw)
+          const scrollPosition = 10 * window.innerWidth;
           bookContainer.scrollTo({
             left: scrollPosition,
             behavior: 'smooth'
@@ -85,7 +86,8 @@ for (let state = 0; state <= totalPages; state++) {
         radio.addEventListener('change', () => {
           if (window.innerWidth <= 768) {
             // Sur mobile, scroller vers la position correspondante
-            const scrollPosition = index * window.innerWidth;
+            // On fait (index - 1) car l'index 1 (Qui suis-je) doit pointer vers la première page (0vw)
+            const scrollPosition = Math.max(0, index - 1) * 2 * window.innerWidth;
             bookContainer.scrollTo({
               left: scrollPosition,
               behavior: 'smooth'
@@ -99,7 +101,8 @@ for (let state = 0; state <= totalPages; state++) {
       bookContainer.addEventListener('scroll', () => {
         if (isScrolling) return;
         const scrollLeft = bookContainer.scrollLeft;
-        const pageIndex = Math.round(scrollLeft / window.innerWidth);
+        // On divise par (2 * innerWidth) et on ajoute 1 car le conteneur 0vw correspond au radio-page-1
+        const pageIndex = Math.round(scrollLeft / (2 * window.innerWidth)) + 1;
         const radio = document.getElementById(`radio-page-${pageIndex}`) as HTMLInputElement | null;
         if (radio && !radio.checked) {
           isScrolling = true;

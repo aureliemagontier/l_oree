@@ -45,7 +45,7 @@ main {
   --page-bg: #fff;
   --page-border: #dcdcdc;
   --page-shadow: rgba(0, 0, 0, 0.1);
-   --color-primary: #2c3e50;
+  --color-primary: #2c3e50;
   --color-secondary: #C7E4CA;
   --color-dark: #1a1a1a;
   --color-light: #F0EFEB;
@@ -63,6 +63,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#page-container-1>div.side.front>div.absolute.inset-0.w-full.h-full.bg-dark.z-0.pointer-events-none.overflow-hidden.rounded-r-lg {
+  border-radius: 0 !important;
+  z-index: 35 !important;
+}
+
+#page-container-1>div.side.front>div.content {
+  z-index: 40 !important;
+}
+
+#page-container-7>div.side.back>div.absolute.inset-0.z-0.overflow-hidden.pointer-events-none.rounded-l-lg.bg-black {
+  border-radius: 0 !important;
+  z-index: 35 !important;
+}
+
+#page-container-7>div.side.back>div.content>div {
+  z-index: 40 !important;
+}
+
+#page-container-1>div.side.front>div.content>div>div.flex.flex-col.flex-grow>div.flex.flex-col.w-full.gap-16.md\:gap-10.animate-\[fade-in_1s_ease-in-out\]>div.self-start.text-left.max-w-\[180px\].md\:max-w-\[220px\] {
+  padding-left: 2em !important;
 }
 
 /* Book Container */
@@ -84,6 +106,15 @@ body {
   width: 0;
   height: 0;
   pointer-events: none;
+}
+
+.content {
+  padding: 1em 2em !important;
+}
+
+.text-xs {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
 }
 
 /* Fallback Mobile View (Stacking / Scroll Snap)*/
@@ -109,7 +140,7 @@ body {
     min-height: calc(100vh - 4rem);
     height: auto;
     box-sizing: border-box;
-  
+
     perspective: none;
     margin: 0;
 
@@ -170,4 +201,4 @@ body {
     font-size: 12px !important;
     line-height: 1.4 !important;
   }
-} 
+}
