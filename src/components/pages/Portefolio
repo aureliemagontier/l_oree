@@ -1,0 +1,84 @@
+<Page>
+
+  <!-- PAGE AVANT (front) -->
+  <Fragment slot="front">
+    <div class="h-full flex flex-col justify-center px-4 md:px-10">
+
+      <h1 class="font-serif text-4xl md:text-5xl font-bold text-primary mb-4">
+        Rayonis Academy
+      </h1>
+
+      <p class="font-sans text-[10px] md:text-xs uppercase tracking-[0.35em] text-primary/60 mb-10">
+        Site éducatif IA & Robotique
+      </p>
+
+      <div class="rounded-2xl overflow-hidden shadow-xl border border-highlight/30">
+        <img src="/images/rayonis-screen.jpg" alt="Aperçu du site Rayonis Academy" class="w-full">
+      </div>
+
+    </div>
+  </Fragment>
+
+  <!-- PAGE ARRIÈRE (back) -->
+  <Fragment slot="back">
+    <div class="h-full flex flex-col justify-center px-4 md:px-10 space-y-10">
+
+      <!-- Contexte -->
+      <section>
+        <h2 class="font-serif text-2xl md:text-3xl font-bold text-primary mb-3">
+          Contexte du projet
+        </h2>
+        <p class="font-sans text-dark/80 leading-relaxed text-[13px] md:text-[15px]">
+          Rayonis Academy est un programme destiné aux jeunes, aux parents et aux enseignants
+          pour découvrir l’intelligence artificielle, la robotique et la création numérique.
+          Le client souhaitait un site capable de parler aux adolescents tout en restant clair
+          et rassurant pour les adultes. L’objectif : créer un espace où la technologie devient
+          un terrain de jeu, un lieu d’exploration et de transmission.
+        </p>
+      </section>
+
+      <!-- Concept -->
+      <section>
+        <h2 class="font-serif text-2xl md:text-3xl font-bold text-primary mb-3">
+          Concept & Direction artistique
+        </h2>
+        <p class="font-sans text-dark/80 leading-relaxed text-[13px] md:text-[15px]">
+          Pour rendre l’apprentissage plus ludique et moins intimidant, j’ai imaginé une interface
+          inspirée des bornes d’arcade rétro‑futuristes. Ce choix permet d’immerger immédiatement
+          l’utilisateur dans un univers ludique, de créer un pont entre générations et de rendre
+          l’IA plus accessible. L’esthétique mêle néons, grilles vectorielles, typographies pixelisées
+          et ambiance OS rétro, pour une expérience immersive et mémorable.
+        </p>
+      </section>
+
+      <!-- Fonctionnalités -->
+      <section>
+        <h2 class="font-serif text-2xl md:text-3xl font-bold text-primary mb-3">
+          Fonctionnalités clés
+        </h2>
+
+        <ul class="font-sans text-dark/80 leading-relaxed text-[13px] md:text-[15px] space-y-2">
+          <li>• Navigation au clavier (A / B / C / H) pour une expérience arcade authentique</li>
+          <li>• Interface immersive inspirée des systèmes rétro</li>
+          <li>• 3 modules pédagogiques : Conférence participative, Robotique & Intelligence, Game Design & IA</li>
+          <li>• Design responsive pensé pour les jeunes publics</li>
+          <li>• Ambiance visuelle cohérente avec l’univers du client</li>
+        </ul>
+      </section>
+
+      <!-- Résultat -->
+      <section>
+        <h2 class="font-serif text-2xl md:text-3xl font-bold text-primary mb-3">
+          Résultat
+        </h2>
+        <p class="font-sans text-dark/80 leading-relaxed text-[13px] md:text-[15px]">
+          Un site qui transforme l’apprentissage de l’IA en aventure, où chaque page devient un niveau
+          à explorer. Une expérience qui parle autant aux adolescents qu’aux adultes, et qui redonne
+          à la technologie son rôle premier : un espace de curiosité, de jeu et de créativité.
+        </p>
+      </section>
+
+    </div>
+  </Fragment>
+
+</Page>
