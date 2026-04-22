@@ -1,4 +1,14 @@
-<Page>
+---
+import Page from '../Page.astro';
+
+interface Props {
+  totalPages: number;
+  tabLabel?: string;
+}
+const { totalPages, tabLabel } = Astro.props;
+---
+
+<Page pageNumber={6} totalPages={totalPages} tabLabel={tabLabel}>
 
   <!-- PAGE AVANT (front) -->
   <Fragment slot="front">
