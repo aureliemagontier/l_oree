@@ -11,9 +11,11 @@ import Page5 from '../components/pages/Page5.astro';
 import Page6 from '../components/pages/Page6.astro';
 import Page7 from '../components/pages/Page7.astro';
 import Page8 from '../components/pages/Page8.astro';
+import Page9 from '../components/pages/Page9.astro';
+import Page10 from '../components/pages/Page10.astro';
 
 // Définissez le nombre total de pages pour que le composant de base s'occupe des z-indexes
-const TOTAL_PAGES = 8;
+const TOTAL_PAGES = 10;
 ---
 
 <html lang="fr">
@@ -35,8 +37,10 @@ const TOTAL_PAGES = 8;
         <Page4 totalPages={TOTAL_PAGES} tabLabel="Mes Packs" />
         <Page5 totalPages={TOTAL_PAGES} tabLabel="Mes Packs suite" />
         <Page6 totalPages={TOTAL_PAGES} tabLabel="Portefolio" />
-        <Page7 totalPages={TOTAL_PAGES} tabLabel="Me contacter" />
-        <Page8 totalPages={TOTAL_PAGES} tabLabel="Me suivre" />
+        <Page7 totalPages={TOTAL_PAGES} tabLabel="L'Orée" />
+        <Page8 totalPages={TOTAL_PAGES} tabLabel="Rayonis Academy" />
+        <Page9 totalPages={TOTAL_PAGES} tabLabel="Me Contacter" />
+        <Page10 totalPages={TOTAL_PAGES} tabLabel="Me Suivre" />
       </Book>
     </main>
   </body>

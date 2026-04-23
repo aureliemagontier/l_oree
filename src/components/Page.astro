@@ -41,7 +41,7 @@ const backwardRadioId = `radio-page-${pageNumber - 1}`;
     </div>
 
     <!-- Navigation Inférieure (Bouton Suivant uniquement à droite) -->
-    <div class="nav-front absolute bottom-4 right-0 z-20 pointer-events-none">
+    <div class="nav-front absolute bottom-0 right-0 z-20 pointer-events-none">
       {
         pageNumber < totalPages && (
           <label
@@ -84,7 +84,7 @@ const backwardRadioId = `radio-page-${pageNumber - 1}`;
     </div>
 
     <!-- Navigation Inférieure (Bouton Précédent uniquement à gauche du livre) -->
-    <div class="nav-back absolute bottom-4 left-0 z-20 pointer-events-none">
+    <div class="nav-back absolute bottom-0 left-0 z-20 pointer-events-none">
       <label
         for={backwardRadioId}
         class="page-tab nav-tab nav-tab-back hidden md:flex pointer-events-auto items-center justify-center gap-2 text-[9px] uppercase tracking-[0.3em] font-bold text-dark bg-white/95 border border-zinc-200 shadow-sm rounded-l-3xl px-3 py-2"
@@ -189,7 +189,7 @@ const backwardRadioId = `radio-page-${pageNumber - 1}`;
   }
 
   .nav-tab {
-    bottom: 4rem;
+    bottom: 1rem;
     top: auto;
     transform: none;
   }

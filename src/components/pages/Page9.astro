@@ -1,0 +1,206 @@
+---
+import Page from "../Page.astro";
+
+interface Props {
+    totalPages: number;
+    tabLabel?: string;
+}
+const { totalPages, tabLabel } = Astro.props;
+---
+
+<Page pageNumber={9} totalPages={totalPages} tabLabel={tabLabel}>
+    <Fragment slot="front">
+        <div class="px-6 md:px-12 py-16 space-y-12">
+            <!-- Contexte du projet -->
+            <section>
+                <h2 class="font-serif text-2xl md:text-3xl text-dark mb-4">
+                    Contexte du projet
+                </h2>
+                <p
+                    class="font-mulish text-[15px] md:text-[16px] text-dark/80 leading-relaxed"
+                >
+                    Rayonis Academy est une entreprise qui s’adresse aux jeunes,
+                    aux parents et aux enseignants, pour découvrir
+                    l’intelligence artificielle, la robotique et la création
+                    numérique. Le client souhaitait un site capable de parler
+                    aux adolescents tout en restant clair et rassurant pour les
+                    adultes. L’objectif : créer un espace où la technologie
+                    devient un terrain de jeu, un lieu d’exploration et de
+                    transmission.
+                </p>
+            </section>
+
+            <!-- Concept & Direction artistique -->
+            <section>
+                <h2 class="font-serif text-2xl md:text-3xl text-dark mb-4">
+                    Concept & Direction artistique
+                </h2>
+                <p
+                    class="font-mulish text-[15px] md:text-[16px] text-dark/80 leading-relaxed"
+                >
+                    Pour rendre l’apprentissage plus ludique et moins
+                    intimidant, j’ai imaginé une interface inspirée des bornes
+                    d’arcade rétro‑futuristes. Ce choix permet d’immerger
+                    immédiatement l’utilisateur dans un univers ludique, de
+                    créer un pont entre générations et de rendre l’IA plus
+                    accessible. L’esthétique mêle néons, grilles vectorielles,
+                    typographies pixelisées et ambiance OS rétro, pour une
+                    expérience immersive et mémorable.
+                </p>
+            </section>
+
+            <!-- Fonctionnalités clés -->
+            <section>
+                <h2 class="font-serif text-2xl md:text-3xl text-dark mb-4">
+                    Fonctionnalités clés
+                </h2>
+                <ul
+                    class="font-mulish text-[15px] md:text-[16px] text-dark/80 leading-relaxed space-y-2"
+                >
+                    <li>
+                        • Navigation au clavier (A / B / C / H) pour une
+                        expérience arcade authentique
+                    </li>
+                    <li>• Interface immersive inspirée des systèmes rétro</li>
+                    <li>
+                        • 3 modules pédagogiques : Conférence participative,
+                        Robotique & Intelligence, Game Design & IA
+                    </li>
+                    <li>• Design responsive pensé pour les jeunes publics</li>
+                    <li>
+                        • Ambiance visuelle cohérente avec l’univers du client
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Résultat -->
+            <section>
+                <h2 class="font-serif text-2xl md:text-3xl text-dark mb-4">
+                    Résultat
+                </h2>
+                <p
+                    class="font-mulish text-[15px] md:text-[16px] text-dark/80 leading-relaxed"
+                >
+                    La nouvelle interface améliore nettement l’expérience
+                    utilisateur grâce à une navigation plus intuitive, une
+                    hiérarchie visuelle claire et une mise en scène des contenus
+                    pensée pour guider chaque profil — jeunes, parents et
+                    enseignants. L’approche UX centrée sur la simplicité et le
+                    jeu facilite la compréhension des modules, renforce
+                    l’engagement et crée un parcours fluide, cohérent et
+                    rassurant. Cette refonte pose les bases d’une expérience
+                    digitale plus accessible, plus immersive et mieux alignée
+                    avec les objectifs pédagogiques de Rayonis Academy.
+                </p>
+            </section>
+
+            <!-- Bouton premium -->
+            <div class="pt-6 flex justify-center">
+                <button
+                    class="px-6 md:px-8 py-3 md:py-4 bg-[#1E2A3A] text-white font-mulish text-[13px] md:text-[14px] rounded-full shadow-md hover:bg-[#1E2A3A]/90 transition-all tracking-wide"
+                    onclick="window.goToContact()"
+                >
+                    Me contacter pour donner vie à votre projet
+                </button>
+            </div>
+        </div>
+    </Fragment>
+    <Fragment slot="back">
+        <div class="h-full flex flex-col justify-center px-2 md:px-6">
+            <div class="flex-grow flex flex-col">
+                <div class="mb-4 mt-2 back-divider-right">
+                    <h2 class="text-3xl font-serif font-bold text-primary mb-1">
+                        Me Contacter
+                    </h2>
+                    <div class="h-1 w-16 bg-primary"></div>
+                </div>
+                <p
+                    class="font-mulish text-[15px] md:text-[16px] text-dark/80 leading-relaxed mb-2"
+                >
+                    Je suis à votre écoute pour toute question, demande ou début
+                    de projet. Laissez‑moi votre message et je vous répondrai
+                    avec attention, afin de vous guider avec précision et
+                    simplicité vers la solution la plus juste pour vous.
+                </p>
+            </div>
+        </div>
+
+        <!-- Début du bloc du bouton -->
+        <div
+            class="space-y-2 md:space-y-3 max-w-md w-full mb-4 md:mb-6 mx-auto"
+        >
+            <div class="flex items-center gap-4 md:gap-6 group">
+                <div class="flex-grow">
+                    <a
+                        href="mailto:aurelie.magontier@loreedesign.com"
+                        class="inline-flex items-center justify-center w-full py-3 md:py-4 bg-primary text-white rounded-xl md:rounded-2xl font-bold uppercase tracking-widest text-[9px] md:text-[10px] hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 font-sans transform hover:-translate-y-1 block text-center"
+                    >
+                        Me contacter par email
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="flex items-center gap-4 md:gap-6 group">
+            <div class="w-10 h-10 md:w-14 md:h-14 bg-primary/10 rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform border border-primary/20 shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 md:w-7 md:h-7 lucide lucide-share-2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.41" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <div class="flex-grow">
+              <p class="text-[8px] md:text-[10px] font-sans text-primary/60 uppercase tracking-widest mb-0.5 md:mb-1">Instagram</p>
+              <p class="text-[11px] md:text-sm font-serif text-dark font-bold tracking-tight leading-tight">C'est par ici : <span class="text-primary break-all">@loree_by_aurelie</span></p>
+            </div> -->
+    </Fragment>
+</Page>
+
+<form
+    action="mailto:aurelie.magontier@loreedesign.com"
+    method="POST"
+    enctype="text/plain"
+    class="space-y-3 md:space-y-4 bg-highlight/20 p-4 md:p-6 rounded-[2rem] md:rounded-[2.5rem] border border-highlight/30 w-full flex-grow mb-4 md:mb-6 relative"
+>
+    <div class="space-y-2 md:space-y-3">
+        <div class="space-y-1 font-sans">
+            <label
+                class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-dark/60 ml-2"
+                >Votre nom</label
+            >
+            <input
+                type="text"
+                name="nom"
+                required
+                class="w-full px-3 md:px-4 py-2 md:py-3 bg-white border border-zinc-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm font-sans text-[10px] md:text-xs"
+                placeholder="Nom Complet"
+            />
+        </div>
+        <div class="space-y-1 font-sans">
+            <label
+                class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-dark/60 ml-2"
+                >Votre email</label
+            >
+            <input
+                type="email"
+                name="email"
+                required
+                class="w-full px-3 md:px-4 py-2 md:py-3 bg-white border border-zinc-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm font-sans text-[10px] md:text-xs"
+                placeholder="Email"
+            />
+        </div>
+        <div class="space-y-1 font-sans">
+            <label
+                class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-dark/60 ml-2"
+                >Votre message</label
+            >
+            <textarea
+                name="message"
+                required
+                class="w-full px-3 md:px-4 py-2 md:py-3 bg-white border border-zinc-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm h-16 md:h-24 resize-none font-sans text-[10px] md:text-xs"
+                placeholder="Comment puis-je vous aider ?"></textarea>
+        </div>
+    </div>
+    <button
+        type="submit"
+        class="w-full py-3 md:py-4 bg-primary text-white rounded-xl md:rounded-2xl font-bold uppercase tracking-widest text-[9px] md:text-[10px] hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 font-sans transform hover:-translate-y-1 mt-2 md:mt-4"
+    >
+        Envoyer le message
+    </button>
+</form>
