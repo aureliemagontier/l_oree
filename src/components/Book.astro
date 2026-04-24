@@ -59,17 +59,17 @@ for (let state = 0; state <= totalPages; state++) {
     // Helper responsive pour la page contact
     (window as any).goToContact = () => {
       if (window.innerWidth <= 768) {
-        // Sur mobile, scroller directement vers la page contact (11ème face)
+        // Sur mobile, scroller directement vers la page contact (face correspondante)
         const bookContainer = document.querySelector('.book-container');
         if (bookContainer) {
-          const target = document.querySelector('#page-container-6 .side.back');
+          const target = document.querySelector('#page-container-9 .side.back');
           if (target) {
             target.scrollIntoView({ behavior: 'smooth' });
           }
         }
       } else {
         // Sur desktop, changer le radio pour le flip 3D
-        const radio = document.getElementById('radio-page-6') as HTMLInputElement | null;
+        const radio = document.getElementById('radio-page-9') as HTMLInputElement | null;
         if (radio) radio.checked = true;
       }
     };
