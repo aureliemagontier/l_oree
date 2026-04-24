@@ -11,32 +11,39 @@ const { totalPages, tabLabel } = Astro.props;
 <Page pageNumber={7} totalPages={totalPages} tabLabel={tabLabel}>
 
 
- <Fragment slot="front">
-  <div 
-    class="min-h-screen w-full bg-cover bg-center bg-no-repeat"
-    style="background-image: url('URL-DE-TA-PHOTO.jpg');"
-  >
-  </div>
-</Fragment>
-<Fragment slot="back">
-  <div class="h-full w-full flex flex-col items-center justify-start px-6 md:px-12 py-20">
+  <Fragment slot="bg-front">
+    <div class="absolute inset-0 w-full h-full bg-dark z-0 pointer-events-none overflow-hidden rounded-r-lg">
+      <img 
+        src="URL-DE-TA-PHOTO.jpg" 
+        alt="L'orée Projet" 
+        class="w-full h-full object-cover"
+      />
+    </div>
+  </Fragment>
 
-    <!-- Titre premium -->
-    <h1 class="font-serif text-[28px] md:text-[32px] text-dark tracking-wide text-center mb-2">
-      L'orée
-    </h1>
+  <Fragment slot="front">
+    <div class="relative z-10 h-full flex flex-col justify-between pt-4 md:pt-8 font-serif">
+      <!-- Vide, juste l'image en fond -->
+    </div>
+  </Fragment>
 
-    <!-- Ligne fine -->
-    <div class="w-20 h-[1px] bg-dark/40 mb-10"></div>
+  <Fragment slot="back">
+    <div class="h-full flex flex-col">
+      <div class="mb-8 min-h-[60px] back-divider-left">
+        <h2 class="text-3xl font-serif font-bold text-primary mb-2">
+          L'orée
+        </h2>
+        <div class="h-1 w-16 bg-primary"></div>
+      </div>
 
-    <!-- Image centrée -->
-    <img 
-      src="URL-DE-TON-IMAGE"
-      alt="Projet Web"
-      class="w-full max-w-3xl rounded-2xl shadow-md object-cover"
-    />
-
-  </div>
-</Fragment>
+      <div class="flex-grow flex flex-col justify-center items-center">
+        <img 
+          src="URL-DE-TON-IMAGE"
+          alt="Projet Web"
+          class="w-full rounded-2xl md:rounded-[2.5rem] shadow-sm object-cover border border-zinc-100"
+        />
+      </div>
+    </div>
+  </Fragment>
 
 </Page>
