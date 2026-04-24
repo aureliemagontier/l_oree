@@ -142,11 +142,8 @@ const { totalPages, tabLabel } = Astro.props;
 
                 try {
                     const response = await fetch("https://rayonis.app.n8n.cloud/webhook/ffb9cca0-459e-4032-959e-659a4c387074", {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(data)
+                        method: "POST",
+                        body: formData
                     });
                     
                     if (response.ok) {
