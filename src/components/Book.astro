@@ -1,5 +1,6 @@
 ---
 import '../styles/book.css';
+import pageTurnSound from '../assets/pagetourne.mp3';
 
 interface Props {
   totalPages?: number;
@@ -48,6 +49,7 @@ for (let state = 0; state <= totalPages; state++) {
   ))}
 
   <div class="book-container">
+    <audio id="page-turn-audio" src={pageTurnSound} preload="auto"></audio>
     <slot />
   </div>
 
@@ -80,8 +82,15 @@ for (let state = 0; state <= totalPages; state++) {
 
       // Écouter les changements de radio
       const radios = document.querySelectorAll('input[name="book-state"]') as NodeListOf<HTMLInputElement>;
+      const audio = document.getElementById('page-turn-audio') as HTMLAudioElement | null;
+      
       radios.forEach((radio, index) => {
         radio.addEventListener('change', () => {
+          if (audio) {
+            audio.currentTime = 0;
+            audio.play().catch(err => console.log('Audio playback prevented by browser policy:', err));
+          }
+
           if (window.innerWidth <= 768) {
             // Sur mobile, scroller vers la position correspondante
             const targetIndex = Math.max(1, index);
