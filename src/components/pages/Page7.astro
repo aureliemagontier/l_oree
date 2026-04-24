@@ -1,5 +1,7 @@
 ---
 import Page from '../Page.astro';
+import portefolio1Img from '../../assets/portefolio1.jpeg';
+import loreePortefolioImg from '../../assets/loreeportefolio.jpg';
 
 interface Props {
   totalPages: number;
@@ -14,7 +16,7 @@ const { totalPages, tabLabel } = Astro.props;
   <Fragment slot="bg-front">
     <div class="absolute inset-0 w-full h-full bg-dark z-0 pointer-events-none overflow-hidden rounded-r-lg">
       <img 
-        src="URL-DE-TA-PHOTO.jpg" 
+        src={portefolio1Img.src} 
         alt="L'orée Projet" 
         class="w-full h-full object-cover"
       />
@@ -38,7 +40,7 @@ const { totalPages, tabLabel } = Astro.props;
 
       <div class="flex-grow flex flex-col justify-center items-center">
         <img 
-          src="URL-DE-TON-IMAGE"
+          src={loreePortefolioImg.src}
           alt="Projet Web"
           class="w-full rounded-2xl md:rounded-[2.5rem] shadow-sm object-cover border border-zinc-100"
         />
