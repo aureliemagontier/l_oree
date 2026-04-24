@@ -26,6 +26,16 @@ const TOTAL_PAGES = 10;
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="L'Orée Design - Le livre 3D Zéro JS" />
     <title>L'Orée Design - Le livre 3D Zéro JS</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-WXW20PKY5V"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WXW20PKY5V');
+    </script>
   </head>
   <body>
     <MobileMenu />
